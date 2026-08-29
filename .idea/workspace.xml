@@ -1,18 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Tetris.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bg.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skin.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000021116454096" />
+      <entry key="S5" value="1.0081318217572492" />
+      <entry key="S10" value="1.1326164414335167" />
+      <entry key="S30" value="2.2821971630281643" />
+      <entry key="S60" value="4.290388627627111" />
+      <entry key="M2" value="9.462917980151074" />
+      <entry key="M5" value="27.340992488779296" />
+      <entry key="M10" value="53.295432794344975" />
+      <entry key="M15" value="75.98129911335012" />
+      <entry key="M30" value="136.09070090319244" />
+      <entry key="H1" value="239.82517566812515" />
+      <entry key="H2" value="384.47387565357803" />
+      <entry key="H4" value="541.7891529102976" />
+      <entry key="D1" value="823.6087942009445" />
+      <entry key="W1" value="903.3039813994295" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="4.9E-324" />
+      <entry key="S30" value="3.259199360241353E-108" />
+      <entry key="S60" value="3.0094374938940336E-54" />
+      <entry key="M2" value="3.1918119055230086E-27" />
+      <entry key="M5" value="6.092464118721073E-11" />
+      <entry key="M10" value="1.828195407018172E-5" />
+      <entry key="M15" value="0.0013479229910166527" />
+      <entry key="M30" value="0.11770895117394478" />
+      <entry key="H1" value="1.2279723580346287" />
+      <entry key="H2" value="4.154656596601832" />
+      <entry key="H4" value="7.895743055704779" />
+      <entry key="D1" value="14.11890865458599" />
+      <entry key="W1" value="15.712971990651086" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.5946035575013605" />
+      <entry key="MS500" value="0.9012504626108302" />
+      <entry key="S2" value="0.9743436577493277" />
+      <entry key="S5" value="0.9972289051230866" />
+      <entry key="S10" value="1.1228111148750863" />
+      <entry key="S30" value="2.26517263352667" />
+      <entry key="S60" value="4.268954240415793" />
+      <entry key="M2" value="9.4363960822314" />
+      <entry key="M5" value="27.308449941515644" />
+      <entry key="M10" value="53.262362099857235" />
+      <entry key="M15" value="75.95090254500447" />
+      <entry key="M30" value="136.1805934886789" />
+      <entry key="H1" value="241.03001107241408" />
+      <entry key="H2" value="388.6108439535833" />
+      <entry key="H4" value="549.672776327664" />
+      <entry key="D1" value="837.7247213256949" />
+      <entry key="W1" value="919.0164890739726" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3ITIib88kudptlPXXEaBoUZI0qg" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,16 +103,34 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Git.CreateWorkingTree.LastParentPath": "/Users/andywu/PycharmProjects",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Run",
+    "Python.render.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/andywu/PycharmProjects/Tetris",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -44,11 +145,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1787782259490</updated>
-      <workItem from="1787782260499" duration="1000" />
+      <workItem from="1787782260499" duration="10724000" />
+      <workItem from="1787811686075" duration="29000" />
+      <workItem from="1787863721203" duration="2962000" />
+      <workItem from="1787866722343" duration="3778000" />
+      <workItem from="1787893280355" duration="5407000" />
+      <workItem from="1787985584455" duration="263000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1787898098247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
