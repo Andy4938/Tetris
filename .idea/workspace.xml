@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Tetris.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bg.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/render (old).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,63 +29,75 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Andy4938&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Andy4938/Tetris.git&quot;,
+    &quot;accountId&quot;: &quot;38fa06f1-0158-47db-8c4a-37ee26e1782b&quot;
+  }
+}</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000021116454096" />
-      <entry key="S5" value="1.0081318217572492" />
-      <entry key="S10" value="1.1326164414335167" />
-      <entry key="S30" value="2.2821971630281643" />
-      <entry key="S60" value="4.290388627627111" />
-      <entry key="M2" value="9.462917980151074" />
-      <entry key="M5" value="27.340992488779296" />
-      <entry key="M10" value="53.295432794344975" />
-      <entry key="M15" value="75.98129911335012" />
-      <entry key="M30" value="136.09070090319244" />
-      <entry key="H1" value="239.82517566812515" />
-      <entry key="H2" value="384.47387565357803" />
-      <entry key="H4" value="541.7891529102976" />
-      <entry key="D1" value="823.6087942009445" />
-      <entry key="W1" value="903.3039813994295" />
+      <entry key="MS100" value="1.0000000369461686" />
+      <entry key="MS500" value="1.0326261921790432" />
+      <entry key="S2" value="1.479120997770017" />
+      <entry key="S5" value="2.4472945346537696" />
+      <entry key="S10" value="4.751899780390067" />
+      <entry key="S30" value="12.72989533581004" />
+      <entry key="S60" value="19.380581324918136" />
+      <entry key="M2" value="27.075198810557495" />
+      <entry key="M5" value="43.66520212192034" />
+      <entry key="M10" value="70.59166064019426" />
+      <entry key="M15" value="95.5707155535998" />
+      <entry key="M30" value="162.71889527801167" />
+      <entry key="H1" value="299.6861122641467" />
+      <entry key="H2" value="561.5587111483991" />
+      <entry key="H4" value="935.9524895451866" />
+      <entry key="D1" value="1753.7401082860458" />
+      <entry key="W1" value="2011.3150127098422" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="4.9E-324" />
-      <entry key="S30" value="3.259199360241353E-108" />
-      <entry key="S60" value="3.0094374938940336E-54" />
-      <entry key="M2" value="3.1918119055230086E-27" />
-      <entry key="M5" value="6.092464118721073E-11" />
-      <entry key="M10" value="1.828195407018172E-5" />
-      <entry key="M15" value="0.0013479229910166527" />
-      <entry key="M30" value="0.11770895117394478" />
-      <entry key="H1" value="1.2279723580346287" />
-      <entry key="H2" value="4.154656596601832" />
-      <entry key="H4" value="7.895743055704779" />
-      <entry key="D1" value="14.11890865458599" />
-      <entry key="W1" value="15.712971990651086" />
+      <entry key="S2" value="2.9346104630516946E-95" />
+      <entry key="S5" value="1.538226130605295E-38" />
+      <entry key="S10" value="1.240252446321028E-19" />
+      <entry key="S30" value="4.986969331598719E-7" />
+      <entry key="S60" value="7.061847726762962E-4" />
+      <entry key="M2" value="0.02657413738107422" />
+      <entry key="M5" value="0.23440271944762925" />
+      <entry key="M10" value="0.49388006490860953" />
+      <entry key="M15" value="0.6624617841567582" />
+      <entry key="M30" value="1.0116954427059026" />
+      <entry key="H1" value="1.563120282188124" />
+      <entry key="H2" value="3.033088158011093" />
+      <entry key="H4" value="6.535560775784931" />
+      <entry key="D1" value="17.429181260025246" />
+      <entry key="W1" value="21.264825356475665" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.5946035575013605" />
-      <entry key="MS500" value="0.9012504626108302" />
-      <entry key="S2" value="0.9743436577493277" />
-      <entry key="S5" value="0.9972289051230866" />
-      <entry key="S10" value="1.1228111148750863" />
-      <entry key="S30" value="2.26517263352667" />
-      <entry key="S60" value="4.268954240415793" />
-      <entry key="M2" value="9.4363960822314" />
-      <entry key="M5" value="27.308449941515644" />
-      <entry key="M10" value="53.262362099857235" />
-      <entry key="M15" value="75.95090254500447" />
-      <entry key="M30" value="136.1805934886789" />
-      <entry key="H1" value="241.03001107241408" />
-      <entry key="H2" value="388.6108439535833" />
-      <entry key="H4" value="549.672776327664" />
-      <entry key="D1" value="837.7247213256949" />
-      <entry key="W1" value="919.0164890739726" />
+      <entry key="MS100" value="0.0124302575586706" />
+      <entry key="MS500" value="0.4158180127275361" />
+      <entry key="S2" value="0.8968201510956082" />
+      <entry key="S5" value="1.899395080534787" />
+      <entry key="S10" value="4.30423752013019" />
+      <entry key="S30" value="12.44948577003871" />
+      <entry key="S60" value="19.195610474062676" />
+      <entry key="M2" value="26.983613543543346" />
+      <entry key="M5" value="43.82180986612953" />
+      <entry key="M10" value="71.01370566858203" />
+      <entry key="M15" value="96.16570607410917" />
+      <entry key="M30" value="163.6751593010412" />
+      <entry key="H1" value="301.2038150649463" />
+      <entry key="H2" value="564.5541091144454" />
+      <entry key="H4" value="942.4594207185863" />
+      <entry key="D1" value="1771.1612457777996" />
+      <entry key="W1" value="2032.5785483339982" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -101,35 +111,69 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.CreateWorkingTree.LastParentPath": "/Users/andywu/PycharmProjects",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.main.executor": "Run",
-    "Python.render.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/andywu/PycharmProjects/Tetris",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.CreateWorkingTree.LastParentPath&quot;: &quot;/Users/andywu/PycharmProjects&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.render.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andywu/PycharmProjects/Tetris&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tetris" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -150,15 +194,51 @@
       <workItem from="1787863721203" duration="2962000" />
       <workItem from="1787866722343" duration="3778000" />
       <workItem from="1787893280355" duration="5407000" />
-      <workItem from="1787985584455" duration="263000" />
+      <workItem from="1787985584455" duration="3714000" />
+      <workItem from="1788235039557" duration="6082000" />
+      <workItem from="1788411414535" duration="3329000" />
+      <workItem from="1788479258557" duration="2237000" />
+      <workItem from="1788562737396" duration="1303000" />
+      <workItem from="1788637329371" duration="7908000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1787986091132</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787986091132</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1787986415631</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787986415631</updated>
+    </task>
+    <task id="LOCAL-00003" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1787987828680</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787987828680</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1787898098247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788642105446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
