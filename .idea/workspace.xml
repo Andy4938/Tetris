@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="restructured with oop">
       <change afterPath="$PROJECT_DIR$/render (old).py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,61 +41,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000369461686" />
-      <entry key="MS500" value="1.0326261921790432" />
-      <entry key="S2" value="1.479120997770017" />
-      <entry key="S5" value="2.4472945346537696" />
-      <entry key="S10" value="4.751899780390067" />
-      <entry key="S30" value="12.72989533581004" />
-      <entry key="S60" value="19.380581324918136" />
-      <entry key="M2" value="27.075198810557495" />
-      <entry key="M5" value="43.66520212192034" />
-      <entry key="M10" value="70.59166064019426" />
-      <entry key="M15" value="95.5707155535998" />
-      <entry key="M30" value="162.71889527801167" />
-      <entry key="H1" value="299.6861122641467" />
-      <entry key="H2" value="561.5587111483991" />
-      <entry key="H4" value="935.9524895451866" />
-      <entry key="D1" value="1753.7401082860458" />
-      <entry key="W1" value="2011.3150127098422" />
+      <entry key="MS100" value="1.0000208441201286" />
+      <entry key="MS500" value="1.1158235077363305" />
+      <entry key="S2" value="1.5841509764675386" />
+      <entry key="S5" value="1.9283721275786094" />
+      <entry key="S10" value="2.7349177737764734" />
+      <entry key="S30" value="5.6263254308141315" />
+      <entry key="S60" value="7.965299116001791" />
+      <entry key="M2" value="11.424351448380543" />
+      <entry key="M5" value="23.308752845654404" />
+      <entry key="M10" value="45.54724802680956" />
+      <entry key="M15" value="66.56817042702686" />
+      <entry key="M30" value="129.84888154851703" />
+      <entry key="H1" value="256.75959781841715" />
+      <entry key="H2" value="508.41461833660725" />
+      <entry key="H4" value="954.1196762159268" />
+      <entry key="D1" value="2252.0081110597334" />
+      <entry key="W1" value="2732.860171178734" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.9346104630516946E-95" />
-      <entry key="S5" value="1.538226130605295E-38" />
-      <entry key="S10" value="1.240252446321028E-19" />
-      <entry key="S30" value="4.986969331598719E-7" />
-      <entry key="S60" value="7.061847726762962E-4" />
-      <entry key="M2" value="0.02657413738107422" />
-      <entry key="M5" value="0.23440271944762925" />
-      <entry key="M10" value="0.49388006490860953" />
-      <entry key="M15" value="0.6624617841567582" />
-      <entry key="M30" value="1.0116954427059026" />
-      <entry key="H1" value="1.563120282188124" />
-      <entry key="H2" value="3.033088158011093" />
-      <entry key="H4" value="6.535560775784931" />
-      <entry key="D1" value="17.429181260025246" />
-      <entry key="W1" value="21.264825356475665" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.6679462462459784E-177" />
+      <entry key="S10" value="4.084049762485739E-89" />
+      <entry key="S30" value="3.4437398954582165E-30" />
+      <entry key="S60" value="1.855769989778182E-15" />
+      <entry key="M2" value="4.328413598158948E-8" />
+      <entry key="M5" value="0.0013234763188274556" />
+      <entry key="M10" value="0.05796253294180725" />
+      <entry key="M15" value="0.23339770885441347" />
+      <entry key="M30" value="1.0321512533755317" />
+      <entry key="H1" value="2.3047739990667364" />
+      <entry key="H2" value="3.9366079820367617" />
+      <entry key="H4" value="6.980970207695813" />
+      <entry key="D1" value="20.052570525304645" />
+      <entry key="W1" value="25.832712004060156" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0124302575586706" />
-      <entry key="MS500" value="0.4158180127275361" />
-      <entry key="S2" value="0.8968201510956082" />
-      <entry key="S5" value="1.899395080534787" />
-      <entry key="S10" value="4.30423752013019" />
-      <entry key="S30" value="12.44948577003871" />
-      <entry key="S60" value="19.195610474062676" />
-      <entry key="M2" value="26.983613543543346" />
-      <entry key="M5" value="43.82180986612953" />
-      <entry key="M10" value="71.01370566858203" />
-      <entry key="M15" value="96.16570607410917" />
-      <entry key="M30" value="163.6751593010412" />
-      <entry key="H1" value="301.2038150649463" />
-      <entry key="H2" value="564.5541091144454" />
-      <entry key="H4" value="942.4594207185863" />
-      <entry key="D1" value="1771.1612457777996" />
-      <entry key="W1" value="2032.5785483339982" />
+      <entry key="MS100" value="4.016138495850205E-5" />
+      <entry key="MS500" value="0.21526185218619467" />
+      <entry key="S2" value="1.141958798468337" />
+      <entry key="S5" value="1.7077405728683295" />
+      <entry key="S10" value="2.587261493276474" />
+      <entry key="S30" value="5.540550262075527" />
+      <entry key="S60" value="7.905767310109752" />
+      <entry key="M2" value="11.37981602204275" />
+      <entry key="M5" value="23.27370379495276" />
+      <entry key="M10" value="45.57274085081784" />
+      <entry key="M15" value="66.77149458186969" />
+      <entry key="M30" value="130.85264646745281" />
+      <entry key="H1" value="259.03500960342126" />
+      <entry key="H2" value="512.3205637704796" />
+      <entry key="H4" value="961.0718869866101" />
+      <entry key="D1" value="2272.050027392195" />
+      <entry key="W1" value="2758.6910700284566" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -199,7 +197,8 @@
       <workItem from="1788411414535" duration="3329000" />
       <workItem from="1788479258557" duration="2237000" />
       <workItem from="1788562737396" duration="1303000" />
-      <workItem from="1788637329371" duration="7908000" />
+      <workItem from="1788637329371" duration="15468000" />
+      <workItem from="1788668433998" duration="9637000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -225,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787987828680</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="restructured with oop">
+      <option name="closed" value="true" />
+      <created>1788645972779</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1788645972779</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,11 +241,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="restructured with oop" />
+    <option name="LAST_COMMIT_MESSAGE" value="restructured with oop" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788642105446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788678175033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
