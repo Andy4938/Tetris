@@ -26,42 +26,35 @@ class Game:
         self.current = Piece(self.queue[0], current=True)
         self.queue.pop(0)
         self.soft_dropping = False
+        self.locked_out = False
 
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == Game.KEYBINDS['hold']:
-                if self.can_hold:
-                    self._hold()
-                    self.can_hold = False
             if event.key == pygame.K_r:
-                self.board.matrix = [[None for _ in range(10)] for _ in range(40)]
-                self.hold = None
-                self.can_hold = True
-                self.queue = []
-                self.generate_bag()
-                self.current = Piece(self.queue[0], current=True)
-                self.queue.pop(0)
-            if event.key == Game.KEYBINDS['cw']:
-                self.current.rotation -= 1
-            if event.key == Game.KEYBINDS['ccw']:
-                self.current.rotation += 1
-            if event.key == Game.KEYBINDS['180']:
-                self.current.rotation += 2
-            if event.key == self.KEYBINDS['sd']:
-                self.soft_dropping = True
-            if event.key == Game.KEYBINDS['hd']:
-                previous_y = None
-                while not previous_y == self.current.y:
-                    previous_y = self.current.y
-                    self.current.y += 1
-                    self.current.collide(self.board.matrix, 'sd')
-                self.board.matrix = self.current.lock_piece(self.board.matrix)
-                self.current = Piece(self.queue[0])
-                self.current.current = True
-                self.queue.pop(0)
-                if len(self.queue) < 6:
-                    self.generate_bag()
-                self.can_hold = True
+                self._reset()
+            if not self.locked_out:
+                if event.key == Game.KEYBINDS['hold']:
+                    if self.can_hold:
+                        self._hold()
+                        self.can_hold = False
+                if event.key == Game.KEYBINDS['cw']:
+                    self.current.rotation -= 1
+                if event.key == Game.KEYBINDS['ccw']:
+                    self.current.rotation += 1
+                if event.key == Game.KEYBINDS['180']:
+                    self.current.rotation += 2
+                if event.key == self.KEYBINDS['sd']:
+                    self.soft_dropping = True
+                if event.key == Game.KEYBINDS['hd']:
+                    self.drop()
+                    self.board.matrix = self.current.lock_piece(self.board.matrix)
+                    self.current = Piece(self.queue[0])
+                    self.current.current = True
+                    self.queue.pop(0)
+                    if len(self.queue) < 6:
+                        self.generate_bag()
+                    self.can_hold = True
+                    self.locked_out = self.current.test_lockout(self, self.board.matrix)
 
     def _hold(self):
         if self.hold:
@@ -79,6 +72,22 @@ class Game:
         random.shuffle(bag)
         self.queue.extend(bag)
 
+    def _reset(self):
+        self.board.matrix = [[None for _ in range(10)] for _ in range(40)]
+        self.hold = None
+        self.can_hold = True
+        self.queue = []
+        self.generate_bag()
+        self.current = Piece(self.queue[0], current=True)
+        self.queue.pop(0)
+
+    def drop(self):
+        previous_y = None
+        while not previous_y == self.current.y:
+            previous_y = self.current.y
+            self.current.y += 1
+            self.current.collide(self.board.matrix, 'sd')
+
 class MovementHandler:
     DAS = 75
     ARR = 0
@@ -95,11 +104,13 @@ class MovementHandler:
                 self.held_dir = 'left'
                 self.press_time = pygame.time.get_ticks()
                 self.last_move = self.press_time
+                game.current.collide(game.board.matrix, 'left')
             elif event.key == game.KEYBINDS['right']:
                 game.current.x += 1
                 self.held_dir = 'right'
                 self.press_time = pygame.time.get_ticks()
                 self.last_move = self.press_time
+                game.current.collide(game.board.matrix, 'right')
         elif event.type == pygame.KEYUP:
             if event.key == game.KEYBINDS['sd']:
                 game.soft_dropping = False
@@ -110,11 +121,7 @@ class MovementHandler:
 
     def update(self, game):
         if game.soft_dropping:
-            previous_y = None
-            while not previous_y == game.current.y:
-                previous_y = game.current.y
-                game.current.y += 1
-                game.current.collide(game.board.matrix, 'sd')
+            game.drop()
         if self.held_dir is None:
             return
         # print(self.held_dir)

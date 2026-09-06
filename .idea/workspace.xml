@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="piece movement, walls, and softdrop/harddrop added">
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="piece movement with DAS, ARR, and instant softdrop added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -39,61 +39,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000000169" />
-      <entry key="MS500" value="1.0018410772453779" />
-      <entry key="S2" value="1.3002827070127798" />
-      <entry key="S5" value="1.9211509847563741" />
-      <entry key="S10" value="2.353402292867869" />
-      <entry key="S30" value="2.774715739211345" />
-      <entry key="S60" value="3.329336117140708" />
-      <entry key="M2" value="6.171282996368989" />
-      <entry key="M5" value="19.775300003699233" />
-      <entry key="M10" value="40.62442890323822" />
-      <entry key="M15" value="58.295724868956526" />
-      <entry key="M30" value="113.28838827683866" />
-      <entry key="H1" value="239.18445223928452" />
-      <entry key="H2" value="498.13877340575795" />
-      <entry key="H4" value="967.9632560303305" />
-      <entry key="D1" value="2463.5804982290965" />
-      <entry key="W1" value="3053.7137447926107" />
+      <entry key="MS100" value="1.0000142369536063" />
+      <entry key="MS500" value="1.1073206795547192" />
+      <entry key="S2" value="1.5723620802993423" />
+      <entry key="S5" value="1.7999601292685243" />
+      <entry key="S10" value="1.8944622656894907" />
+      <entry key="S30" value="2.14998539206179" />
+      <entry key="S60" value="3.817418185923421" />
+      <entry key="M2" value="9.121749616396658" />
+      <entry key="M5" value="26.68972743147209" />
+      <entry key="M10" value="53.572735762683564" />
+      <entry key="M15" value="76.89848417817136" />
+      <entry key="M30" value="138.93158001007814" />
+      <entry key="H1" value="264.6021128736857" />
+      <entry key="H2" value="521.9610743519518" />
+      <entry key="H4" value="994.860897511429" />
+      <entry key="D1" value="2539.9039282103213" />
+      <entry key="W1" value="3160.2045910231154" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="1.0992473744337341E-296" />
-      <entry key="S30" value="2.2234727563127774E-99" />
-      <entry key="S60" value="4.715468875561819E-50" />
-      <entry key="M2" value="2.181871253355709E-25" />
-      <entry key="M5" value="1.5948370704619768E-10" />
-      <entry key="M10" value="2.0120901233108338E-5" />
-      <entry key="M15" value="0.0011528247829016426" />
-      <entry key="M30" value="0.07253985817197443" />
-      <entry key="H1" value="0.6110053666449772" />
-      <entry key="H2" value="2.0268915316060143" />
-      <entry key="H4" value="5.009218251797061" />
-      <entry key="D1" value="18.97342554521427" />
-      <entry key="W1" value="25.629371641846546" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="9.482594631700253E-118" />
+      <entry key="S60" value="3.079445831510753E-59" />
+      <entry key="M2" value="5.5757457706708305E-30" />
+      <entry key="M5" value="2.3211641757816115E-12" />
+      <entry key="M10" value="2.427404752575342E-6" />
+      <entry key="M15" value="2.814663512704362E-4" />
+      <entry key="M30" value="0.03584332512873323" />
+      <entry key="H1" value="0.42949767734037914" />
+      <entry key="H2" value="1.6993717939332902" />
+      <entry key="H4" value="4.5866848725028895" />
+      <entry key="D1" value="18.69679812455946" />
+      <entry key="W1" value="25.57565371773471" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.8155893774112443E-4" />
-      <entry key="MS500" value="0.21781513776480121" />
-      <entry key="S2" value="0.9255965087063306" />
-      <entry key="S5" value="1.7051895269281228" />
-      <entry key="S10" value="2.224254526780071" />
-      <entry key="S30" value="2.7250803293371386" />
-      <entry key="S60" value="3.3008071294088137" />
-      <entry key="M2" value="6.147260780782162" />
-      <entry key="M5" value="19.747857897417923" />
-      <entry key="M10" value="40.598529106466394" />
-      <entry key="M15" value="58.27331851051586" />
-      <entry key="M30" value="113.33883603648945" />
-      <entry key="H1" value="239.77108554782959" />
-      <entry key="H2" value="500.1382799266619" />
-      <entry key="H4" value="972.9448322282653" />
-      <entry key="D1" value="2482.54246190801" />
-      <entry key="W1" value="3079.341114318171" />
+      <entry key="MS100" value="1.683060072154571E-5" />
+      <entry key="MS500" value="0.17707928695546574" />
+      <entry key="S2" value="1.0854083076096477" />
+      <entry key="S5" value="1.5655811056594051" />
+      <entry key="S10" value="1.7694406234166375" />
+      <entry key="S30" value="2.1042137085411814" />
+      <entry key="S60" value="3.7862704588828135" />
+      <entry key="M2" value="9.094445919644201" />
+      <entry key="M5" value="26.66272464523637" />
+      <entry key="M10" value="53.545953181451154" />
+      <entry key="M15" value="76.87296391298774" />
+      <entry key="M30" value="138.94343662651715" />
+      <entry key="H1" value="265.00694586302245" />
+      <entry key="H2" value="523.6334333597089" />
+      <entry key="H4" value="999.4201686995801" />
+      <entry key="D1" value="2558.5890698877993" />
+      <entry key="W1" value="3185.7781948712927" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -197,7 +197,7 @@
       <workItem from="1788562737396" duration="1303000" />
       <workItem from="1788637329371" duration="15468000" />
       <workItem from="1788668433998" duration="9703000" />
-      <workItem from="1788729568101" duration="5223000" />
+      <workItem from="1788729568101" duration="6820000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -239,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788678391105</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="piece movement with DAS, ARR, and instant softdrop added.">
+      <option name="closed" value="true" />
+      <created>1788736956803</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1788736956803</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,11 +258,12 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="restructured with oop" />
     <MESSAGE value="piece movement, walls, and softdrop/harddrop added" />
-    <option name="LAST_COMMIT_MESSAGE" value="piece movement, walls, and softdrop/harddrop added" />
+    <MESSAGE value="piece movement with DAS, ARR, and instant softdrop added." />
+    <option name="LAST_COMMIT_MESSAGE" value="piece movement with DAS, ARR, and instant softdrop added." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788736602242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788738432134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

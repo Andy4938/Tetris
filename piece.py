@@ -64,7 +64,18 @@ class Piece:
             if mino:
                 x = index % dimension + self.x
                 y = index // dimension + self.y
-                print(f'{x}, {y}')
                 matrix[y][x] = self.type
         return matrix
+
+    def test_lockout(self, game, matrix):
+        my_map = Piece.MINO_MAPS[self.type]
+        dimension = int(sqrt(len(my_map[self.rotation])))
+        for index, mino in enumerate(my_map[self.rotation]):
+            if mino:
+                x = index % dimension + self.x
+                y = index // dimension + self.y
+                if matrix[y][x]:
+                    game.board.matrix = [['p' if item is not None else None for item in row] for row in matrix]
+                    return True
+        return False
 
