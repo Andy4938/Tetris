@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="restructured with oop">
-      <change afterPath="$PROJECT_DIR$/render (old).py" afterDir="false" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="piece movement, walls, and softdrop/harddrop added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,61 +39,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000208441201286" />
-      <entry key="MS500" value="1.1158235077363305" />
-      <entry key="S2" value="1.5841509764675386" />
-      <entry key="S5" value="1.9283721275786094" />
-      <entry key="S10" value="2.7349177737764734" />
-      <entry key="S30" value="5.6263254308141315" />
-      <entry key="S60" value="7.965299116001791" />
-      <entry key="M2" value="11.424351448380543" />
-      <entry key="M5" value="23.308752845654404" />
-      <entry key="M10" value="45.54724802680956" />
-      <entry key="M15" value="66.56817042702686" />
-      <entry key="M30" value="129.84888154851703" />
-      <entry key="H1" value="256.75959781841715" />
-      <entry key="H2" value="508.41461833660725" />
-      <entry key="H4" value="954.1196762159268" />
-      <entry key="D1" value="2252.0081110597334" />
-      <entry key="W1" value="2732.860171178734" />
+      <entry key="MS100" value="1.0000000000000169" />
+      <entry key="MS500" value="1.0018410772453779" />
+      <entry key="S2" value="1.3002827070127798" />
+      <entry key="S5" value="1.9211509847563741" />
+      <entry key="S10" value="2.353402292867869" />
+      <entry key="S30" value="2.774715739211345" />
+      <entry key="S60" value="3.329336117140708" />
+      <entry key="M2" value="6.171282996368989" />
+      <entry key="M5" value="19.775300003699233" />
+      <entry key="M10" value="40.62442890323822" />
+      <entry key="M15" value="58.295724868956526" />
+      <entry key="M30" value="113.28838827683866" />
+      <entry key="H1" value="239.18445223928452" />
+      <entry key="H2" value="498.13877340575795" />
+      <entry key="H4" value="967.9632560303305" />
+      <entry key="D1" value="2463.5804982290965" />
+      <entry key="W1" value="3053.7137447926107" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.6679462462459784E-177" />
-      <entry key="S10" value="4.084049762485739E-89" />
-      <entry key="S30" value="3.4437398954582165E-30" />
-      <entry key="S60" value="1.855769989778182E-15" />
-      <entry key="M2" value="4.328413598158948E-8" />
-      <entry key="M5" value="0.0013234763188274556" />
-      <entry key="M10" value="0.05796253294180725" />
-      <entry key="M15" value="0.23339770885441347" />
-      <entry key="M30" value="1.0321512533755317" />
-      <entry key="H1" value="2.3047739990667364" />
-      <entry key="H2" value="3.9366079820367617" />
-      <entry key="H4" value="6.980970207695813" />
-      <entry key="D1" value="20.052570525304645" />
-      <entry key="W1" value="25.832712004060156" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="1.0992473744337341E-296" />
+      <entry key="S30" value="2.2234727563127774E-99" />
+      <entry key="S60" value="4.715468875561819E-50" />
+      <entry key="M2" value="2.181871253355709E-25" />
+      <entry key="M5" value="1.5948370704619768E-10" />
+      <entry key="M10" value="2.0120901233108338E-5" />
+      <entry key="M15" value="0.0011528247829016426" />
+      <entry key="M30" value="0.07253985817197443" />
+      <entry key="H1" value="0.6110053666449772" />
+      <entry key="H2" value="2.0268915316060143" />
+      <entry key="H4" value="5.009218251797061" />
+      <entry key="D1" value="18.97342554521427" />
+      <entry key="W1" value="25.629371641846546" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.016138495850205E-5" />
-      <entry key="MS500" value="0.21526185218619467" />
-      <entry key="S2" value="1.141958798468337" />
-      <entry key="S5" value="1.7077405728683295" />
-      <entry key="S10" value="2.587261493276474" />
-      <entry key="S30" value="5.540550262075527" />
-      <entry key="S60" value="7.905767310109752" />
-      <entry key="M2" value="11.37981602204275" />
-      <entry key="M5" value="23.27370379495276" />
-      <entry key="M10" value="45.57274085081784" />
-      <entry key="M15" value="66.77149458186969" />
-      <entry key="M30" value="130.85264646745281" />
-      <entry key="H1" value="259.03500960342126" />
-      <entry key="H2" value="512.3205637704796" />
-      <entry key="H4" value="961.0718869866101" />
-      <entry key="D1" value="2272.050027392195" />
-      <entry key="W1" value="2758.6910700284566" />
+      <entry key="MS100" value="4.8155893774112443E-4" />
+      <entry key="MS500" value="0.21781513776480121" />
+      <entry key="S2" value="0.9255965087063306" />
+      <entry key="S5" value="1.7051895269281228" />
+      <entry key="S10" value="2.224254526780071" />
+      <entry key="S30" value="2.7250803293371386" />
+      <entry key="S60" value="3.3008071294088137" />
+      <entry key="M2" value="6.147260780782162" />
+      <entry key="M5" value="19.747857897417923" />
+      <entry key="M10" value="40.598529106466394" />
+      <entry key="M15" value="58.27331851051586" />
+      <entry key="M30" value="113.33883603648945" />
+      <entry key="H1" value="239.77108554782959" />
+      <entry key="H2" value="500.1382799266619" />
+      <entry key="H4" value="972.9448322282653" />
+      <entry key="D1" value="2482.54246190801" />
+      <entry key="W1" value="3079.341114318171" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -198,7 +196,8 @@
       <workItem from="1788479258557" duration="2237000" />
       <workItem from="1788562737396" duration="1303000" />
       <workItem from="1788637329371" duration="15468000" />
-      <workItem from="1788668433998" duration="9637000" />
+      <workItem from="1788668433998" duration="9703000" />
+      <workItem from="1788729568101" duration="5223000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -232,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788645972779</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="piece movement, walls, and softdrop/harddrop added">
+      <option name="closed" value="true" />
+      <created>1788678391104</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788678391105</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,11 +249,12 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="first commit" />
     <MESSAGE value="restructured with oop" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructured with oop" />
+    <MESSAGE value="piece movement, walls, and softdrop/harddrop added" />
+    <option name="LAST_COMMIT_MESSAGE" value="piece movement, walls, and softdrop/harddrop added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788678175033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788736602242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
