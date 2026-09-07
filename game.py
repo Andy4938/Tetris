@@ -39,10 +39,13 @@ class Game:
                         self.can_hold = False
                 if event.key == Game.KEYBINDS['cw']:
                     self.current.rotation -= 1
+                    self.current.collide(self.board.matrix, 'cw')
                 if event.key == Game.KEYBINDS['ccw']:
                     self.current.rotation += 1
+                    self.current.collide(self.board.matrix, 'ccw')
                 if event.key == Game.KEYBINDS['180']:
                     self.current.rotation += 2
+                    self.current.collide(self.board.matrix, '180')
                 if event.key == self.KEYBINDS['sd']:
                     self.soft_dropping = True
                 if event.key == Game.KEYBINDS['hd']:
@@ -54,16 +57,19 @@ class Game:
                     if len(self.queue) < 6:
                         self.generate_bag()
                     self.can_hold = True
+                    lines_cleared = self.clear_lines()
                     self.locked_out = self.current.test_lockout(self, self.board.matrix)
 
     def _hold(self):
         if self.hold:
             temp = self.hold
             self.hold = self.current
+            self.hold.reset_pos()
             self.current = temp
             self.current.current = True
         else:
             self.hold = self.current
+            self.hold.reset_pos()
             self.current = Piece(self.queue[0], current=True)
             self.queue.pop(0)
 
@@ -87,6 +93,17 @@ class Game:
             previous_y = self.current.y
             self.current.y += 1
             self.current.collide(self.board.matrix, 'sd')
+
+    def clear_lines(self):
+        cleared_lines = 0
+        for index, row in enumerate(self.board.matrix):
+            # print(all(item is not None for item in row))
+            if all(item is not None for item in row):
+                cleared_lines += 1
+                self.board.matrix.pop(index)
+                self.board.matrix.insert(0, [None for _ in range(10)])
+
+        return cleared_lines
 
 class MovementHandler:
     DAS = 75

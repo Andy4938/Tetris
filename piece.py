@@ -16,6 +16,26 @@ class Piece:
               [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0]],
         'o': [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
     }
+
+    # index is based on rotation number after rotation is performed
+    CCW_KICKS = {
+        # 0 is cw to base, 1 is base to ccw, 2 is ccw to 180, 3 is 180 to cw
+        'i': [[(2, 0), (-1, 0), (2, 1), (-1, -2)], [(-1, 0), (2, 0), (-1, 2), (2, -1)],
+              [(-2, 0), (1, 0), (-2, -1), (1, 2)], [(1, 0), (-2, 0), (1, -2), (-2, 1)]],
+        'other': [[(1, 0), (1, -1), (0, 2), (1, 2)], [(1, 0), (1, 1), (0, -2), (1, -2)],
+              [(-1, 0), (-1, -1), (0, 2), (-1, 2)], [(-1, 0), (-1, 1), (0, -2), (-1, -2)]]
+    }
+    CW_KICKS = {
+        # 0 is ccw to base, 1 is 180 to ccw, 2 is cw to 180, 3 is base to cw
+        'i': [[(1, 0), (-2, -0), (1, -2), (-2, 1)], [(2, 0), (-1, 0), (2, 1), (-1, -2)],
+              [(-1, 0), (2, 0), (-1, 2), (2, -1)], [(-2, 0), (1, 0), (-2, -1), (1, 2)]],
+        'other': [[(-1, 0), (-1, -1), (0, 2), (-1, 2)], [(1, 0), (1, 1), (0, -2), (1, -2)],
+                  [(1, 0), (1, -1), (0, 2), (1, 2)], [(-1, 0), (-1, 1), (0, -2), (-1, -2)]]
+
+    }
+    # 0 is 180 to base, 1 is cw to ccw, 2 is base to 180, 3 is ccw to cw
+    KICKS_180 = [[(0, -1), (-1, -1), (1, -1), (-1, 0), (1, 0)], [(1, 0), (1, 2), (1, 1), (0, 2), (0, 1)],
+         [(0, 1), (1, 1), (-1, 1), (1, 0), (-1, 0)], [(-1, 0), (-1, 2), (-1, 1), (0, 2), (0, 1)],]
     def __init__(self, piece_type, rotation=0, current=False):
         self.type = piece_type
         self.rotation = rotation
@@ -40,6 +60,7 @@ class Piece:
                         screen.blit(skin, (x + x_pos, y + y_pos), area=mino)
 
     def collide(self, matrix, action):
+        self.rotation %= 4
         my_map = Piece.MINO_MAPS[self.type][self.rotation]
         collision = False
         dimension = int(sqrt(len(my_map)))
@@ -52,11 +73,33 @@ class Piece:
                     break
 
         if collision:
-            x_change = 1 if action == 'left' else -1 if action == 'right' else 0
-            y_change = -1 if action == 'sd' else 0
-            self.x += x_change
-            self.y += y_change
-
+            if action in ('left', 'right', 'sd'):
+                x_change = 1 if action == 'left' else -1 if action == 'right' else 0
+                y_change = -1 if action == 'sd' else 0
+                self.x += x_change
+                self.y += y_change
+            else:
+                kick_table = 'i' if self.type == 'i' else 'other'
+                kicks = Piece.CW_KICKS[kick_table][self.rotation] if action == 'cw' \
+                    else Piece.CCW_KICKS[kick_table][self.rotation] if action == 'ccw' else Piece.KICKS_180[self.rotation]
+                for kick in kicks:
+                    valid_kick = True
+                    self.x += kick[0]
+                    self.y -= kick[1]
+                    for index, mino in enumerate(my_map):
+                        if mino:
+                            x = index % dimension + self.x
+                            y = index // dimension + self.y
+                            if x < 0 or x > 9 or y > 39 or matrix[y][x]:
+                                valid_kick = False
+                                break
+                    if valid_kick:
+                        break
+                    self.x -= kick[0]
+                    self.y += kick[1]
+                if not valid_kick:
+                    revert = 1 if action == 'cw' else -1 if action == 'ccw' else 2
+                    self.rotation += revert
     def lock_piece(self, matrix):
         my_map = Piece.MINO_MAPS[self.type]
         dimension = int(sqrt(len(my_map[self.rotation])))
@@ -79,3 +122,7 @@ class Piece:
                     return True
         return False
 
+    def reset_pos(self):
+        self.rotation = 0
+        self.x = 4 if self.type == 'o' else 3
+        self.y = 17
