@@ -151,6 +151,8 @@ class MovementHandler:
                 previous_x = game.current.x
                 game.current.x += 1 if self.held_dir == 'right' else -1
                 game.current.collide(game.board.matrix, self.held_dir)
+                if game.soft_dropping:
+                    game.drop()
                 if not self.instant:
                     break
             self.last_move = now
