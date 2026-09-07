@@ -6,6 +6,8 @@ class Assets:
         self.bg = pygame.transform.scale(pygame.image.load("bg.jpeg").convert(), (w, h))
         self.bg.set_alpha(200)
         self.skin = pygame.transform.scale(pygame.image.load("skin.png").convert(), (270, 30))
+        self.ghost_skin = self.skin.copy()
+        self.ghost_skin.set_alpha(150)
         self.font = pygame.font.Font(None, 32)
 
 class Renderer:
@@ -22,6 +24,7 @@ class Renderer:
             self._draw_hold_piece(board, tetris.hold.type)
         self._draw_queue_box(board)
         self._draw_next_pieces(tetris, board)
+        self._draw_ghost_piece(tetris.current, board)
         self._draw_current_piece(board, tetris.current)
         self._draw_matrix(board)
 
@@ -98,3 +101,14 @@ class Renderer:
                     crop_x = Piece.PIECES.index(current_mino) * Piece.MINO_SIZE
                     mino = pygame.Rect(crop_x, 0, Piece.MINO_SIZE, Piece.MINO_SIZE)
                     self.screen.blit(self.assets.skin, (board.x + j * Piece.MINO_SIZE + 1, board.y + (i - 20) * Piece.MINO_SIZE - 1), area=mino)
+
+    def _draw_ghost_piece(self, current, board):
+        previous_y = None
+        ghost_y = current.y
+        while not previous_y == ghost_y:
+            previous_y = ghost_y
+            ghost_y += 1
+            ghost_y += current.collide(board.matrix, 'ghost', ghost_y)
+        x = board.x + board.thickness / 3
+        y = board.y - board.thickness / 3
+        current.draw(self.screen, self.assets.ghost_skin, x, y, ghost=True, ghost_y=ghost_y)

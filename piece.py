@@ -43,7 +43,7 @@ class Piece:
         self.y = 17
         self.current = current
 
-    def draw(self, screen, skin, x, y):
+    def draw(self, screen, skin, x, y, ghost=False, ghost_y=None):
         crop_x = Piece.PIECES.index(self.type) * Piece.MINO_SIZE
         mino = pygame.Rect(crop_x, 0, Piece.MINO_SIZE, Piece.MINO_SIZE)
         self.rotation %= 4
@@ -55,11 +55,15 @@ class Piece:
                 x_pos = j * Piece.MINO_SIZE
                 if mino_map[i * dimension + j] == 1:
                     if self.current:
-                        screen.blit(skin, (x + self.x * Piece.MINO_SIZE + x_pos, y + (self.y - 20) * Piece.MINO_SIZE + y_pos), area=mino)
+                        if ghost:
+                            screen.blit(skin, (x + self.x * Piece.MINO_SIZE + x_pos,
+                                               y + (ghost_y - 20) * Piece.MINO_SIZE + y_pos), area=mino)
+                        else:
+                            screen.blit(skin, (x + self.x * Piece.MINO_SIZE + x_pos, y + (self.y - 20) * Piece.MINO_SIZE + y_pos), area=mino)
                     else:
                         screen.blit(skin, (x + x_pos, y + y_pos), area=mino)
 
-    def collide(self, matrix, action):
+    def collide(self, matrix, action, ghost_y=None):
         self.rotation %= 4
         my_map = Piece.MINO_MAPS[self.type][self.rotation]
         collision = False
@@ -67,11 +71,13 @@ class Piece:
         for index, mino in enumerate(my_map):
             if mino:
                 x = index % dimension + self.x
-                y = index // dimension + self.y
+                y = index // dimension + self.y if not ghost_y else index // dimension + ghost_y
                 if x < 0 or x > 9 or y > 39 or matrix[y][x]:
                     collision = True
                     break
 
+        if action == 'ghost':
+            return -1 if collision else 0
         if collision:
             if action in ('left', 'right', 'sd'):
                 x_change = 1 if action == 'left' else -1 if action == 'right' else 0
@@ -100,6 +106,7 @@ class Piece:
                 if not valid_kick:
                     revert = 1 if action == 'cw' else -1 if action == 'ccw' else 2
                     self.rotation += revert
+
     def lock_piece(self, matrix):
         my_map = Piece.MINO_MAPS[self.type]
         dimension = int(sqrt(len(my_map[self.rotation])))
