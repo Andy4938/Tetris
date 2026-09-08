@@ -124,7 +124,7 @@ class Piece:
             if mino:
                 x = index % dimension + self.x
                 y = index // dimension + self.y
-                if matrix[y][x]:
+                if matrix[y][x] or game.lines_cleared >= 40:
                     game.board.matrix = [['p' if item is not None else None for item in row] for row in matrix]
                     return True
         return False
