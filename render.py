@@ -12,6 +12,8 @@ class Assets:
         self.stat_label_font = pygame.font.Font(None, 48)
         self.stat_font = pygame.font.Font(None, 48)
         self.lines_left_font = pygame.font.Font(None, 200)
+        self.reset_scales = [1.5, 1.5, 1.5] # 0 is ready, 1 is set, 2 is go
+        self.reset_alphas = [0, 0, 0]
 
 class Renderer:
     def __init__(self, screen, window_w, window_h):
@@ -31,6 +33,7 @@ class Renderer:
         self._draw_current_piece(board, tetris.current)
         self._draw_matrix(board)
         self._display_stats(tetris)
+        self._new_game(tetris)
 
     def _draw_bg(self):
         self.screen.fill((100, 100, 100))
@@ -119,9 +122,10 @@ class Renderer:
 
     def _display_stats(self, game):
         stat_y_start = game.board.y + game.board.h / 3 + 10
+        stat_x_start = game.board.x - 10
         # Pieces
-        self._display_stat('Pieces', game.board.x - 130, stat_y_start, is_label=True)
-        self._display_stat(str(game.pieces), game.board.x - 40 - 19 * (len(str(game.pieces)) - 1), stat_y_start + 40)
+        self._display_stat('Pieces', stat_x_start - 130, stat_y_start, is_label=True)
+        self._display_stat(str(game.pieces), stat_x_start - 40 - 19 * (len(str(game.pieces)) - 1), stat_y_start + 40)
         # Time
         time_raw = game.final_time if game.locked_out else pygame.time.get_ticks() - game.start_time
         hours = '' if time_raw < 3600000 else time_raw // 3600000
@@ -131,17 +135,17 @@ class Renderer:
         seconds_display = '00' if seconds < 1 else f'0{seconds}' if seconds < 10 else seconds
         ms = time_raw % 1000
         ms_display = f'00{ms}' if ms < 10 else f'0{ms}' if ms < 100 else ms
-        time = f'{minutes_display}:{seconds_display}:{ms_display}'
-        self._display_stat('Time', game.board.x - 100, stat_y_start + 300, is_label=True)
-        self._display_stat(time, game.board.x - 23 - 19 * (len(time) - 1), stat_y_start + 340)
+        time = f'{minutes_display}:{seconds_display}.{ms_display}'
+        self._display_stat('Time', stat_x_start - 100, stat_y_start + 300, is_label=True)
+        self._display_stat(time, stat_x_start - 23 - 19 * (len(time) - 1), stat_y_start + 340)
         # PPS
         pps = f'{round(game.pieces / time_raw * 1000, 2):.2f}'
-        self._display_stat('PPS', game.board.x - 90, stat_y_start + 100, is_label=True)
-        self._display_stat(pps, game.board.x - 30 - 19 * (len(pps) - 1), stat_y_start + 140)
+        self._display_stat('PPS', stat_x_start - 90, stat_y_start + 100, is_label=True)
+        self._display_stat(pps, stat_x_start - 30 - 19 * (len(pps) - 1), stat_y_start + 140)
         # KPP
         kpp = '0.00' if game.pieces == 0 else f'{round(game.key_presses / game.pieces, 2):.2f}'
-        self._display_stat('KPP', game.board.x - 90, stat_y_start + 200, is_label=True)
-        self._display_stat(kpp, game.board.x - 30 - 19 * (len(kpp) - 1), stat_y_start + 240)
+        self._display_stat('KPP', stat_x_start - 90, stat_y_start + 200, is_label=True)
+        self._display_stat(kpp, stat_x_start - 30 - 19 * (len(kpp) - 1), stat_y_start + 240)
         # Lines
         lines = str(game.lines_cleared)
         self._display_stat('Lines', game.board.x + game.board.w + 35, stat_y_start + 300, is_label=True)
@@ -156,3 +160,28 @@ class Renderer:
     def _display_stat(self, text, x, y, is_label=False):
         text_surface = self.assets.stat_label_font.render(text, True, 'white') if is_label else self.assets.stat_font.render(text, True, 'white')
         self.screen.blit(text_surface, (x, y))
+
+    def _new_game(self, game):
+        time = pygame.time.get_ticks() - game.reset_time
+        # text_surface = self.assets.lines_left_font.render('Ready', True, (232, 208, 30))
+        # orig_w, orig_h = text_surface.get_size()
+        # scale = self.assets.reset_scales[0]
+        # self.assets.reset_scales[0] -= ((scale - 0.5) / 10)
+        # scaled_surface = pygame.transform.smoothscale(text_surface, (orig_w * scale, orig_h * scale))
+        # scaled_surface.set_alpha(self.assets.reset_alphas[0])
+        # self.assets.reset_alphas[0] += 20 if time < 700 else self.assets.reset_alphas[0] / -20
+        # self.screen.blit(scaled_surface, ((game.board.x + game.board.w / 2 - scale * 210), game.board.y + game.board.h / 3))
+        self._fading_text(time, 0, 650, 'READY', 0, (game.board.x + game.board.w / 2), game.board.y + game.board.h / 2.5)
+        self._fading_text(time, 850, 1150, 'SET', 1, (game.board.x + game.board.w / 2 + 6), game.board.y + game.board.h / 2.5)
+        self._fading_text(time, 1350, 1600, 'GO!', 2, (game.board.x + game.board.w / 2 + 10), game.board.y + game.board.h / 2.5)
+    def _fading_text(self, time, starting_time, disappearing_time, text, order, x, y):
+        if time > starting_time:
+            text_surface = self.assets.lines_left_font.render(text, True, (232, 208, 30))
+            orig_w, orig_h = text_surface.get_size()
+            scale = self.assets.reset_scales[order]
+            self.assets.reset_scales[order] -= ((scale - 0.5) / 10)
+            scaled_surface = pygame.transform.smoothscale(text_surface, (orig_w * scale, orig_h * scale))
+            scaled_surface.set_alpha(self.assets.reset_alphas[order])
+            self.assets.reset_alphas[order] += 20 if time < disappearing_time else -10
+            self.screen.blit(scaled_surface,
+                             (x - scale * len(text) * 48, y))

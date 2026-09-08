@@ -28,6 +28,7 @@ class Game:
         self.soft_dropping = False
         self.locked_out = False
         self.pieces = 0
+        self.reset_time = 0
         self.start_time = 0
         self.key_presses = 0
         self.lines_cleared = 0
@@ -103,6 +104,7 @@ class Game:
         self.queue.pop(0)
         self.locked_out = False
         self.pieces = 0
+        self.reset_time = pygame.time.get_ticks()
         self.start_time = pygame.time.get_ticks()
         self.key_presses = 0
         self.lines_cleared = 0
