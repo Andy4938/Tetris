@@ -121,7 +121,7 @@ class Renderer:
         current.draw(self.screen, self.assets.ghost_skin, x, y, ghost=True, ghost_y=ghost_y)
 
     def _display_stats(self, game):
-        stat_y_start = game.board.y + game.board.h / 3 + 10
+        stat_y_start = game.board.y + game.board.h / 3
         stat_x_start = game.board.x - 10
         # Pieces
         self._display_stat('Pieces', stat_x_start - 130, stat_y_start, is_label=True)
@@ -148,10 +148,10 @@ class Renderer:
         self._display_stat(kpp, stat_x_start - 30 - 19 * (len(kpp) - 1), stat_y_start + 240)
         # Lines
         lines = str(game.lines_cleared)
-        self._display_stat('Lines', game.board.x + game.board.w + 35, stat_y_start + 300, is_label=True)
-        self._display_stat(lines, game.board.x + game.board.w + 65 - 8 * (len(lines) - 1), stat_y_start + 340)
+        self._display_stat('Lines', game.board.x + game.board.w + 35, stat_y_start + 290, is_label=True)
+        self._display_stat(lines, game.board.x + game.board.w + 65 - 8 * (len(lines) - 1), stat_y_start + 330)
         # Lines left
-        lines_left = str(40 - game.lines_cleared)
+        lines_left = '0' if game.lines_cleared > 40 else str(40 - game.lines_cleared)
         lines_left_surface = self.assets.lines_left_font.render(lines_left, True,
                                                           (255, 255, 255))
         lines_left_surface.set_alpha((100))
