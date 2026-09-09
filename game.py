@@ -4,20 +4,10 @@ from piece import Piece
 import random
 
 class Game:
-    KEYBINDS = {
-        'right': pygame.K_RIGHTBRACKET,
-        'left': pygame.K_p,
-        'hold': pygame.K_c,
-        'cw': pygame.K_LEFTBRACKET,
-        'ccw': pygame.K_z,
-        '180': pygame.K_LSHIFT,
-        'hd': pygame.K_SPACE,
-        'sd': pygame.K_RALT
-    }
-    def __init__(self, window_w, window_h):
+    def __init__(self, window_w, window_h, x, player):
         self.w = window_w
         self.h = window_h
-        self.board = Board(self.w, self.h, 300,
+        self.board = Board(self.w, self.h, x, 280,
                            3, 4, 'black', 'white')
         self.hold = None
         self.can_hold = True
@@ -36,32 +26,55 @@ class Game:
         self.resetting = True
         self.reset_animation_done = False
 
+        if player == 1:
+            self.KEYBINDS = {
+                'right': pygame.K_RIGHTBRACKET,
+                'left': pygame.K_p,
+                'hold': pygame.K_c,
+                'cw': pygame.K_LEFTBRACKET,
+                'ccw': pygame.K_z,
+                '180': pygame.K_LSHIFT,
+                'hd': pygame.K_SPACE,
+                'sd': pygame.K_RALT
+            }
+        else:
+            self.KEYBINDS = {
+                'right': pygame.K_RIGHTBRACKET,
+                'left': pygame.K_p,
+                'hold': pygame.K_c,
+                'cw': pygame.K_LEFTBRACKET,
+                'ccw': pygame.K_z,
+                '180': pygame.K_LSHIFT,
+                'hd': pygame.K_SPACE,
+                'sd': pygame.K_RALT
+            }
+
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r and self.reset_animation_done:
                 self._reset()
             if not self.locked_out and not self.resetting:
-                if event.key == Game.KEYBINDS['hold']:
+                if event.key == self.KEYBINDS['hold']:
                     if self.can_hold:
                         self._hold()
                         self.can_hold = False
                         self.key_presses += 1
-                if event.key == Game.KEYBINDS['cw']:
+                if event.key == self.KEYBINDS['cw']:
                     self.current.rotation -= 1
                     self.current.collide(self.board.matrix, 'cw')
                     self.key_presses += 1
-                if event.key == Game.KEYBINDS['ccw']:
+                if event.key == self.KEYBINDS['ccw']:
                     self.current.rotation += 1
                     self.current.collide(self.board.matrix, 'ccw')
                     self.key_presses += 1
-                if event.key == Game.KEYBINDS['180']:
+                if event.key == self.KEYBINDS['180']:
                     self.current.rotation += 2
                     self.current.collide(self.board.matrix, '180')
                     self.key_presses += 1
                 if event.key == self.KEYBINDS['sd']:
                     self.soft_dropping = True
                     self.key_presses += 1
-                if event.key == Game.KEYBINDS['hd']:
+                if event.key == self.KEYBINDS['hd']:
                     self.drop()
                     self.board.matrix = self.current.lock_piece(self.board.matrix)
                     self.current = Piece(self.queue[0])

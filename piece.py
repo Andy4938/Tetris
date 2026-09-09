@@ -3,7 +3,7 @@ from math import sqrt
 
 class Piece:
     PIECES = ['p', 'g', 'z', 'l', 'o', 's', 'i', 'j', 't']
-    MINO_SIZE = 30
+    MINO_SIZE = 28
     MINO_MAPS = {
         # represents filled in minos of a 3x3 grid, except 4x4 for I and 2x2 for O
         # 0 is base state, 1 is ccw rotation, 2 is 180 rotation, 3 is cw rotation

@@ -5,7 +5,7 @@ class Assets:
     def __init__(self, w, h):
         self.bg = pygame.transform.scale(pygame.image.load("bg.jpeg").convert(), (w, h))
         self.bg.set_alpha(200)
-        self.skin = pygame.transform.scale(pygame.image.load("skin.png").convert(), (270, 30))
+        self.skin = pygame.transform.scale(pygame.image.load("skin.png").convert(), (252, 28))
         self.ghost_skin = self.skin.copy()
         self.ghost_skin.set_alpha(150)
         self.font = pygame.font.Font(None, 32)
@@ -22,7 +22,6 @@ class Renderer:
 
     def draw_game(self, tetris):
         board = tetris.board
-        self._draw_bg()
         self._draw_board(board)
         self._draw_hold_box(board)
         if tetris.hold:
@@ -36,7 +35,7 @@ class Renderer:
         if not tetris.reset_animation_done:
             self._new_game(tetris)
 
-    def _draw_bg(self):
+    def draw_bg(self):
         self.screen.fill((100, 100, 100))
         self.screen.blit(self.assets.bg, (0, 0))
 
@@ -75,7 +74,7 @@ class Renderer:
         self.screen.blit(hold_text_surface, (hold_start_x, board.y - 2))
 
     def _draw_hold_piece(self, board, hold):
-        x_offset = 137 if hold == 'i' else 109 if hold == 'o' else 122
+        x_offset = 128 if hold == 'i' else 100 if hold == 'o' else 113
         y_offset = 21 if hold == 'i' else 35
         Piece(hold).draw(self.screen, self.assets.skin, board.x - x_offset,  board.y + y_offset)
 
@@ -89,7 +88,7 @@ class Renderer:
 
     def _draw_next_pieces(self, tetris, board):
         for index, piece in enumerate(tetris.queue[:5]):
-            offset = 19 if piece == 'i' else 53 if  piece == 'o' else 37
+            offset = 18.5 if piece == 'i' else 47 if  piece == 'o' else 34
             # factor = 2 if piece == 'i' else 1
             i_offset = 16 if piece == 'i' else 0
             x = board.x + board.w + offset
