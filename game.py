@@ -33,12 +33,14 @@ class Game:
         self.key_presses = 0
         self.lines_cleared = 0
         self.end_time = 0
+        self.resetting = True
+        self.reset_animation_done = False
 
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_r:
+            if event.key == pygame.K_r and self.reset_animation_done:
                 self._reset()
-            if not self.locked_out:
+            if not self.locked_out and not self.resetting:
                 if event.key == Game.KEYBINDS['hold']:
                     if self.can_hold:
                         self._hold()
@@ -95,6 +97,7 @@ class Game:
         self.queue.extend(bag)
 
     def _reset(self):
+        self.resetting = True
         self.board.matrix = [[None for _ in range(10)] for _ in range(40)]
         self.hold = None
         self.can_hold = True
@@ -108,6 +111,7 @@ class Game:
         self.start_time = pygame.time.get_ticks()
         self.key_presses = 0
         self.lines_cleared = 0
+        self.reset_animation_done = False
 
     def drop(self):
         previous_y = None
@@ -140,14 +144,16 @@ class MovementHandler:
         if not game.locked_out:
             if event.type == pygame.KEYDOWN:
                 if event.key == game.KEYBINDS['left']:
-                    game.current.x -= 1
+                    if not game.resetting:
+                        game.current.x -= 1
                     self.held_dir = 'left'
                     self.press_time = pygame.time.get_ticks()
                     self.last_move = self.press_time
                     game.current.collide(game.board.matrix, 'left')
                     game.key_presses += 1
                 elif event.key == game.KEYBINDS['right']:
-                    game.current.x += 1
+                    if not game.resetting:
+                        game.current.x += 1
                     self.held_dir = 'right'
                     self.press_time = pygame.time.get_ticks()
                     self.last_move = self.press_time
@@ -174,7 +180,8 @@ class MovementHandler:
             previous_x = None
             while not previous_x == game.current.x:
                 previous_x = game.current.x
-                game.current.x += 1 if self.held_dir == 'right' else -1
+                if not game.resetting:
+                    game.current.x += 1 if self.held_dir == 'right' else -1
                 game.current.collide(game.board.matrix, self.held_dir)
                 if game.soft_dropping:
                     game.drop()

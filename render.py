@@ -33,7 +33,8 @@ class Renderer:
         self._draw_current_piece(board, tetris.current)
         self._draw_matrix(board)
         self._display_stats(tetris)
-        self._new_game(tetris)
+        if not tetris.reset_animation_done:
+            self._new_game(tetris)
 
     def _draw_bg(self):
         self.screen.fill((100, 100, 100))
@@ -135,7 +136,7 @@ class Renderer:
         seconds_display = '00' if seconds < 1 else f'0{seconds}' if seconds < 10 else seconds
         ms = time_raw % 1000
         ms_display = f'00{ms}' if ms < 10 else f'0{ms}' if ms < 100 else ms
-        time = f'{minutes_display}:{seconds_display}.{ms_display}'
+        time = '00:00.000' if game.resetting else f'{minutes_display}:{seconds_display}.{ms_display}'
         self._display_stat('Time', stat_x_start - 100, stat_y_start + 300, is_label=True)
         self._display_stat(time, stat_x_start - 23 - 19 * (len(time) - 1), stat_y_start + 340)
         # PPS
@@ -171,9 +172,17 @@ class Renderer:
         # scaled_surface.set_alpha(self.assets.reset_alphas[0])
         # self.assets.reset_alphas[0] += 20 if time < 700 else self.assets.reset_alphas[0] / -20
         # self.screen.blit(scaled_surface, ((game.board.x + game.board.w / 2 - scale * 210), game.board.y + game.board.h / 3))
-        self._fading_text(time, 0, 650, 'READY', 0, (game.board.x + game.board.w / 2), game.board.y + game.board.h / 2.5)
-        self._fading_text(time, 850, 1150, 'SET', 1, (game.board.x + game.board.w / 2 + 6), game.board.y + game.board.h / 2.5)
-        self._fading_text(time, 1350, 1600, 'GO!', 2, (game.board.x + game.board.w / 2 + 10), game.board.y + game.board.h / 2.5)
+        self._fading_text(time, 0, 250, 'READY', 0, (game.board.x + game.board.w / 2), game.board.y + game.board.h / 2.5)
+        self._fading_text(time, 500, 750, 'SET', 1, (game.board.x + game.board.w / 2 + 6), game.board.y + game.board.h / 2.5)
+        self._fading_text(time, 1000, 1250, 'GO!', 2, (game.board.x + game.board.w / 2 + 10), game.board.y + game.board.h / 2.5)
+        if time > 1000 and game.resetting:
+            game.resetting = False
+            game.start_time = pygame.time.get_ticks()
+        if time > 2000:
+            game.reset_animation_done = True
+            self.assets.reset_scales = [1.5, 1.5, 1.5]  # 0 is ready, 1 is set, 2 is go
+            self.assets.reset_alphas = [0, 0, 0]
+
     def _fading_text(self, time, starting_time, disappearing_time, text, order, x, y):
         if time > starting_time:
             text_surface = self.assets.lines_left_font.render(text, True, (232, 208, 30))

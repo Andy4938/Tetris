@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Ready set go text added, but timer and game don't reflect it yet">
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
@@ -38,61 +37,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000255125" />
-      <entry key="MS500" value="1.007908318600045" />
-      <entry key="S2" value="1.427002920821833" />
-      <entry key="S5" value="2.112263361229588" />
-      <entry key="S10" value="2.8598965158758016" />
-      <entry key="S30" value="5.033021678952296" />
-      <entry key="S60" value="8.056719853425246" />
-      <entry key="M2" value="15.069060785266238" />
-      <entry key="M5" value="35.857105939938606" />
-      <entry key="M10" value="65.29194135516386" />
-      <entry key="M15" value="92.58500274290071" />
-      <entry key="M30" value="170.82416290713957" />
-      <entry key="H1" value="313.2172511772427" />
-      <entry key="H2" value="546.1073681518096" />
-      <entry key="H4" value="950.4023214039656" />
-      <entry key="D1" value="3044.7241469607006" />
-      <entry key="W1" value="4241.731846854554" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000032940555" />
+      <entry key="S2" value="1.0114452350714715" />
+      <entry key="S5" value="1.2834922367665584" />
+      <entry key="S10" value="2.2402748202771123" />
+      <entry key="S30" value="5.938459523407621" />
+      <entry key="S60" value="8.762129988882755" />
+      <entry key="M2" value="12.003908413610924" />
+      <entry key="M5" value="21.431526836390507" />
+      <entry key="M10" value="40.95962813645088" />
+      <entry key="M15" value="56.821761573456875" />
+      <entry key="M30" value="84.52716529054963" />
+      <entry key="H1" value="126.4088271505302" />
+      <entry key="H2" value="263.9046583595458" />
+      <entry key="H4" value="618.8735349412665" />
+      <entry key="D1" value="2869.6365168218913" />
+      <entry key="W1" value="4324.8875712580875" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.4639590177942319E-202" />
-      <entry key="S10" value="1.2099417414876768E-101" />
-      <entry key="S30" value="2.2957335788484217E-34" />
-      <entry key="S60" value="1.5151678385078067E-17" />
-      <entry key="M2" value="3.89251568848195E-9" />
-      <entry key="M5" value="4.3260561163785904E-4" />
-      <entry key="M10" value="0.020799350427933322" />
-      <entry key="M15" value="0.07566210667533015" />
-      <entry key="M30" value="0.28062580206578874" />
-      <entry key="H1" value="0.5999283656328626" />
-      <entry key="H2" value="1.060194123245478" />
-      <entry key="H4" value="2.2522764781047737" />
-      <entry key="D1" value="16.065204486795064" />
-      <entry key="W1" value="26.569384224084896" />
+      <entry key="MS500" value="5.273629235630098E-128" />
+      <entry key="S2" value="1.5154004027130293E-32" />
+      <entry key="S5" value="1.8715910483340455E-13" />
+      <entry key="S10" value="4.3261889098078635E-7" />
+      <entry key="S30" value="0.0075634958395181" />
+      <entry key="S60" value="0.08756735926278914" />
+      <entry key="M2" value="0.3194173013878853" />
+      <entry key="M5" value="0.840453116469915" />
+      <entry key="M10" value="1.2596260603463336" />
+      <entry key="M15" value="1.4596540628460615" />
+      <entry key="M30" value="1.7040787808939244" />
+      <entry key="H1" value="1.8846236304331554" />
+      <entry key="H2" value="2.196361262259567" />
+      <entry key="H4" value="3.109534527586776" />
+      <entry key="D1" value="16.355928634409025" />
+      <entry key="W1" value="28.146615834501493" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9201876506483513" />
-      <entry key="MS500" value="0.9910126948021983" />
-      <entry key="S2" value="1.3620222935724848" />
-      <entry key="S5" value="2.0076319986627262" />
-      <entry key="S10" value="2.754548127461805" />
-      <entry key="S30" value="4.948494452016336" />
-      <entry key="S60" value="7.98638420400303" />
-      <entry key="M2" value="15.005714295701209" />
-      <entry key="M5" value="35.80389515045174" />
-      <entry key="M10" value="65.26638947977116" />
-      <entry key="M15" value="92.61653036256477" />
-      <entry key="M30" value="171.0627596447093" />
-      <entry key="H1" value="313.77937204579115" />
-      <entry key="H2" value="547.1367736942104" />
-      <entry key="H4" value="952.6291735003324" />
-      <entry key="D1" value="3060.775908350032" />
-      <entry key="W1" value="4268.29856304444" />
+      <entry key="MS100" value="0.2932087373079697" />
+      <entry key="MS500" value="0.7824117820726623" />
+      <entry key="S2" value="0.9463043416349532" />
+      <entry key="S5" value="1.195204155265926" />
+      <entry key="S10" value="2.123132665575187" />
+      <entry key="S30" value="5.855507878948962" />
+      <entry key="S60" value="8.787291872960546" />
+      <entry key="M2" value="12.280063899909717" />
+      <entry key="M5" value="22.23978229385817" />
+      <entry key="M10" value="42.188332190782084" />
+      <entry key="M15" value="58.25280936489544" />
+      <entry key="M30" value="86.20999849431388" />
+      <entry key="H1" value="128.27784244422452" />
+      <entry key="H2" value="266.0857005026109" />
+      <entry key="H4" value="621.9662266714207" />
+      <entry key="D1" value="2885.9797516785843" />
+      <entry key="W1" value="4353.031464138606" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -106,34 +105,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.CreateWorkingTree.LastParentPath": "/Users/andywu/PycharmProjects",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.font_test.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.render.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/andywu/PycharmProjects/Tetris",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.CreateWorkingTree.LastParentPath&quot;: &quot;/Users/andywu/PycharmProjects&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.font_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.render.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andywu/PycharmProjects/Tetris&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -199,7 +198,7 @@
       <workItem from="1788668433998" duration="9703000" />
       <workItem from="1788729568101" duration="17129000" />
       <workItem from="1788839829935" duration="8792000" />
-      <workItem from="1788900034321" duration="4241000" />
+      <workItem from="1788900034321" duration="7145000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -297,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788848423748</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Ready set go text added, but timer and game don't reflect it yet">
+      <option name="closed" value="true" />
+      <created>1788904307752</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1788904307752</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,12 +322,13 @@
     <MESSAGE value="ghost piece added" />
     <MESSAGE value="40 Line sprint with stats implemented" />
     <MESSAGE value="fixed bug with reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug with reset" />
+    <MESSAGE value="Ready set go text added, but timer and game don't reflect it yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready set go text added, but timer and game don't reflect it yet" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788904282335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788917970548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
