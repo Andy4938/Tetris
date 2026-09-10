@@ -4,6 +4,7 @@ from piece import Piece
 import random
 
 class Game:
+    SPINS = ['Single', 'Double', 'Triple', 'Tetris']
     def __init__(self, window_w, window_h, x, player):
         self.w = window_w
         self.h = window_h
@@ -25,6 +26,7 @@ class Game:
         self.end_time = 0
         self.resetting = True
         self.reset_animation_done = False
+        self.spin_type = 'none'
 
         if player == 1:
             self.KEYBINDS = {
@@ -61,11 +63,11 @@ class Game:
                         self.key_presses += 1
                 if event.key == self.KEYBINDS['cw']:
                     self.current.rotation -= 1
-                    self.current.collide(self.board.matrix, 'cw')
+                    forced_spin = self.current.collide(self.board.matrix, 'cw')
                     self.key_presses += 1
                 if event.key == self.KEYBINDS['ccw']:
                     self.current.rotation += 1
-                    self.current.collide(self.board.matrix, 'ccw')
+                    forced_spin = self.current.collide(self.board.matrix, 'ccw')
                     self.key_presses += 1
                 if event.key == self.KEYBINDS['180']:
                     self.current.rotation += 2
@@ -76,7 +78,7 @@ class Game:
                     self.key_presses += 1
                 if event.key == self.KEYBINDS['hd']:
                     self.drop()
-                    self.board.matrix = self.current.lock_piece(self.board.matrix)
+                    self.board.matrix, self.spin_type = self.current.lock_piece(self.board.matrix)
                     self.current = Piece(self.queue[0])
                     self.current.current = True
                     self.queue.pop(0)
@@ -84,6 +86,8 @@ class Game:
                         self.generate_bag()
                     self.can_hold = True
                     lines_cleared = self.clear_lines()
+                    if self.spin_type != 'none' and lines_cleared > 0:
+                        self.spin_type = f'{self.spin_type} {Game.SPINS[lines_cleared - 1]}'
                     self.lines_cleared += lines_cleared
                     self.locked_out = self.current.test_lockout(self, self.board.matrix)
                     if self.locked_out:
@@ -125,6 +129,7 @@ class Game:
         self.key_presses = 0
         self.lines_cleared = 0
         self.reset_animation_done = False
+        self.spin_type = 'none'
 
     def drop(self):
         previous_y = None

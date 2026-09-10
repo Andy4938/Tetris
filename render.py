@@ -156,6 +156,9 @@ class Renderer:
                                                           (255, 255, 255))
         lines_left_surface.set_alpha((100))
         self.screen.blit(lines_left_surface, (game.board.x + game.board.w / 2.5 - 50 * (len(lines_left) - 1), game.board.y + game.board.h / 8))
+        # Spin
+        if game.spin_type != 'none':
+            self._display_stat(game.spin_type, game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) - 1), game.board.y + game.board.h + 20)
 
     def _display_stat(self, text, x, y, is_label=False):
         text_surface = self.assets.stat_label_font.render(text, True, 'white') if is_label else self.assets.stat_font.render(text, True, 'white')

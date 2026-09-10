@@ -85,10 +85,11 @@ class Piece:
                 self.x += x_change
                 self.y += y_change
             else:
+                force_spin = False
                 kick_table = 'i' if self.type == 'i' else 'other'
                 kicks = Piece.CW_KICKS[kick_table][self.rotation] if action == 'cw' \
                     else Piece.CCW_KICKS[kick_table][self.rotation] if action == 'ccw' else Piece.KICKS_180[self.rotation]
-                for kick in kicks:
+                for index, kick in enumerate(kicks):
                     valid_kick = True
                     self.x += kick[0]
                     self.y -= kick[1]
@@ -100,22 +101,39 @@ class Piece:
                                 valid_kick = False
                                 break
                     if valid_kick:
+                        force_spin = index == 4 and self.type == 't'
                         break
                     self.x -= kick[0]
                     self.y += kick[1]
                 if not valid_kick:
                     revert = 1 if action == 'cw' else -1 if action == 'ccw' else 2
                     self.rotation += revert
+                if action == 'cw' or action == 'ccw':
+                    return force_spin
 
     def lock_piece(self, matrix):
+        spin = 'none'
+        t_corners = 0
+        t_corners_faced = 0
         my_map = Piece.MINO_MAPS[self.type]
         dimension = int(sqrt(len(my_map[self.rotation])))
         for index, mino in enumerate(my_map[self.rotation]):
+            corner_filled = False
+            x = index % dimension + self.x
+            y = index // dimension + self.y
+            if self.type == 't' and index in (0, 2, 6, 8):
+                corner_filled = y > 39 or x < 0 or x > 9 or matrix[y][x]
+                if corner_filled:
+                    t_corners += 1
+                    t_corners_faced += 1 if self.rotation == 0 and index in (0, 2) or self.rotation == 1 and index in (0, 6) or self.rotation == 2 and index in (6, 8) or self.rotation == 3 and index in (2, 8) else 0
             if mino:
-                x = index % dimension + self.x
-                y = index // dimension + self.y
                 matrix[y][x] = self.type
-        return matrix
+                if self.type != 't':
+                    if matrix[y - 1][x] and not my_map[self.rotation][index - dimension]:
+                        print(matrix[y - 1][x])
+                        spin = 'mini'
+            spin = 'none' if self.type == 't' and t_corners < 3 else f'{self.type.upper()}-spin' if t_corners_faced == 2 else f'Mini {self.type.upper()}-spin' if spin != 'none' else 'none'
+        return matrix, spin
 
     def test_lockout(self, game, matrix):
         my_map = Piece.MINO_MAPS[self.type]
