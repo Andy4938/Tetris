@@ -4,7 +4,7 @@ from piece import Piece
 import random
 
 class Game:
-    SPINS = ['Single', 'Double', 'Triple', 'Tetris']
+    SPINS = ['', 'Single', 'Double', 'Triple', 'Tetris']
     def __init__(self, window_w, window_h, x, player):
         self.w = window_w
         self.h = window_h
@@ -26,7 +26,11 @@ class Game:
         self.end_time = 0
         self.resetting = True
         self.reset_animation_done = False
-        self.spin_type = 'none'
+        self.spin_type = ''
+        self.last_input = None
+        self.force_spin = False
+        self.player = player
+        self.last_lines_cleared = 0
 
         if player == 1:
             self.KEYBINDS = {
@@ -57,22 +61,30 @@ class Game:
                 self._reset()
             if not self.locked_out and not self.resetting:
                 if event.key == self.KEYBINDS['hold']:
+                    self.key_presses += 1
                     if self.can_hold:
                         self._hold()
                         self.can_hold = False
-                        self.key_presses += 1
+                        self.last_input = 'hold'
                 if event.key == self.KEYBINDS['cw']:
                     self.current.rotation -= 1
-                    forced_spin = self.current.collide(self.board.matrix, 'cw')
+                    self.force_spin, failed = self.current.collide(self.board.matrix, 'cw')
                     self.key_presses += 1
+                    if not failed:
+                        self.last_input = 'cw'
                 if event.key == self.KEYBINDS['ccw']:
                     self.current.rotation += 1
-                    forced_spin = self.current.collide(self.board.matrix, 'ccw')
+                    self.force_spin, failed = self.current.collide(self.board.matrix, 'ccw')
                     self.key_presses += 1
+                    if not failed:
+                        self.last_input = 'ccw'
                 if event.key == self.KEYBINDS['180']:
                     self.current.rotation += 2
-                    self.current.collide(self.board.matrix, '180')
+                    failed = self.current.collide(self.board.matrix, '180')
                     self.key_presses += 1
+                    print(failed)
+                    if not failed:
+                        self.last_input = '180'
                 if event.key == self.KEYBINDS['sd']:
                     self.soft_dropping = True
                     self.key_presses += 1
@@ -85,14 +97,21 @@ class Game:
                     if len(self.queue) < 6:
                         self.generate_bag()
                     self.can_hold = True
-                    lines_cleared = self.clear_lines()
-                    if self.spin_type != 'none' and lines_cleared > 0:
-                        self.spin_type = f'{self.spin_type} {Game.SPINS[lines_cleared - 1]}'
-                    self.lines_cleared += lines_cleared
+                    self.last_lines_cleared = self.clear_lines()
+                    # if self.spin_type != 'none' and self.last_lines_cleared > 0:
+                        # self.spin_type = f'{self.spin_type}'
+                    if self.force_spin and self.spin_type[:4] == 'Mini':
+                        self.spin_type = self.spin_type[4:]
+                    if not (self.last_input in ('cw', 'ccw', '180')):
+                        self.spin_type = ''
+                    # if self.player == 1:
+                        # print(self.last_input)
+                    self.lines_cleared += self.last_lines_cleared
                     self.locked_out = self.current.test_lockout(self, self.board.matrix)
                     if self.locked_out:
                         self.final_time = pygame.time.get_ticks() - self.start_time
                     self.key_presses += 1
+                    # self.last_input = 'hd'
                     self.pieces += 1
 
     def _hold(self):
@@ -129,7 +148,10 @@ class Game:
         self.key_presses = 0
         self.lines_cleared = 0
         self.reset_animation_done = False
-        self.spin_type = 'none'
+        self.spin_type = ''
+        self.last_input = None
+        self.force_spin = False
+        self.last_lines_cleared = 0
 
     def drop(self):
         previous_y = None
@@ -137,6 +159,11 @@ class Game:
             previous_y = self.current.y
             self.current.y += 1
             self.current.collide(self.board.matrix, 'sd')
+            # print(previous_y)
+            # print(self.current.y)
+            if previous_y != self.current.y:
+                self.last_input = 'sd'
+                # print('hi')
 
     def clear_lines(self):
         cleared_lines = 0
@@ -167,7 +194,7 @@ class MovementHandler:
                     self.held_dir = 'left'
                     self.press_time = pygame.time.get_ticks()
                     self.last_move = self.press_time
-                    game.current.collide(game.board.matrix, 'left')
+                    game.last_input = 'left' if game.current.collide(game.board.matrix, 'left') else game.last_input
                     game.key_presses += 1
                 elif event.key == game.KEYBINDS['right']:
                     if not game.resetting:
@@ -175,7 +202,7 @@ class MovementHandler:
                     self.held_dir = 'right'
                     self.press_time = pygame.time.get_ticks()
                     self.last_move = self.press_time
-                    game.current.collide(game.board.matrix, 'right')
+                    game.last_input = 'right' if game.current.collide(game.board.matrix, 'right') else game.last_input
                     game.key_presses += 1
             elif event.type == pygame.KEYUP:
                 if event.key == game.KEYBINDS['sd']:

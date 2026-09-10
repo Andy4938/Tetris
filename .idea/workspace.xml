@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Remaining lines display can't go below 0" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Added t-spin detection and all-spin detection, but not working properly yet (doesn't check that last input is a spin)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,61 +43,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.477476170756587" />
-      <entry key="MS500" value="3.412241579703683" />
-      <entry key="S2" value="8.68286665413964" />
-      <entry key="S5" value="13.051079551045754" />
-      <entry key="S10" value="15.546325394788475" />
-      <entry key="S30" value="17.736911919400693" />
-      <entry key="S60" value="18.878842673666064" />
-      <entry key="M2" value="21.58983286846628" />
-      <entry key="M5" value="27.677809983593896" />
-      <entry key="M10" value="35.48427779304574" />
-      <entry key="M15" value="47.635015577857374" />
-      <entry key="M30" value="99.01355468999488" />
-      <entry key="H1" value="192.4162132291662" />
-      <entry key="H2" value="347.0058944404087" />
-      <entry key="H4" value="679.894338137477" />
-      <entry key="D1" value="2997.074618849686" />
-      <entry key="W1" value="4630.10991856894" />
+      <entry key="MS100" value="1.0004510652432665" />
+      <entry key="MS500" value="1.5402327225802543" />
+      <entry key="S2" value="4.142158193514432" />
+      <entry key="S5" value="5.987123395442981" />
+      <entry key="S10" value="6.983536594949057" />
+      <entry key="S30" value="10.179591794917021" />
+      <entry key="S60" value="16.07336563386388" />
+      <entry key="M2" value="25.274536803955726" />
+      <entry key="M5" value="39.61724737390836" />
+      <entry key="M10" value="52.507163609095855" />
+      <entry key="M15" value="60.9936965044178" />
+      <entry key="M30" value="76.4472848115562" />
+      <entry key="H1" value="117.69563700755843" />
+      <entry key="H2" value="267.08302743876135" />
+      <entry key="H4" value="620.3581222252428" />
+      <entry key="D1" value="3170.711066585879" />
+      <entry key="W1" value="5249.976740696788" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="3.6836210066042876E-278" />
-      <entry key="S10" value="4.119451823019498E-139" />
-      <entry key="S30" value="2.155972241760645E-46" />
-      <entry key="S60" value="3.2795899868220154E-23" />
-      <entry key="M2" value="1.2801880087429692E-11" />
-      <entry key="M5" value="1.1541521518175722E-4" />
-      <entry key="M10" value="0.024038020079139022" />
-      <entry key="M15" value="0.14315389355396999" />
-      <entry key="M30" value="0.883360752414434" />
-      <entry key="H1" value="2.341437694756257" />
-      <entry key="H2" value="4.062520387829553" />
-      <entry key="H4" value="5.946298092767832" />
-      <entry key="D1" value="19.941598546078325" />
-      <entry key="W1" value="32.80697513997294" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="6.268794547958893E-272" />
+      <entry key="S60" value="5.5922939015429785E-136" />
+      <entry key="M2" value="5.286387237649613E-68" />
+      <entry key="M5" value="3.225649334522042E-27" />
+      <entry key="M10" value="1.2707957016299716E-13" />
+      <entry key="M15" value="4.344313858548405E-9" />
+      <entry key="M30" value="1.538852924555253E-4" />
+      <entry key="H1" value="0.030903816260592347" />
+      <entry key="H2" value="0.46672418621712797" />
+      <entry key="H4" value="2.0154826027784667" />
+      <entry key="D1" value="16.651321206006365" />
+      <entry key="W1" value="31.972667052198847" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.447081692795888" />
-      <entry key="MS500" value="3.3988858672373663" />
-      <entry key="S2" value="8.67476262885307" />
-      <entry key="S5" value="13.04618091158655" />
-      <entry key="S10" value="15.54339402634459" />
-      <entry key="S30" value="17.73569572970319" />
-      <entry key="S60" value="18.87674288009546" />
-      <entry key="M2" value="21.583472254237993" />
-      <entry key="M5" value="27.666864186679966" />
-      <entry key="M10" value="35.49836143212091" />
-      <entry key="M15" value="47.76929174228504" />
-      <entry key="M30" value="99.88898357077095" />
-      <entry key="H1" value="194.7495645657672" />
-      <entry key="H2" value="351.058703854561" />
-      <entry key="H4" value="685.8279507109908" />
-      <entry key="D1" value="3017.0040706117748" />
-      <entry key="W1" value="4662.914141220858" />
+      <entry key="MS100" value="0.0015551904414602415" />
+      <entry key="MS500" value="0.6900288880840474" />
+      <entry key="S2" value="3.5537163065064243" />
+      <entry key="S5" value="5.637623636729534" />
+      <entry key="S10" value="6.776943276298018" />
+      <entry key="S30" value="10.084519312676171" />
+      <entry key="S60" value="16.006021334797804" />
+      <entry key="M2" value="25.22662871995582" />
+      <entry key="M5" value="39.58902560100032" />
+      <entry key="M10" value="52.486857674182545" />
+      <entry key="M15" value="60.97668931387467" />
+      <entry key="M30" value="76.43555256070091" />
+      <entry key="H1" value="117.7172046514047" />
+      <entry key="H2" value="267.5398854987264" />
+      <entry key="H4" value="622.3620295920269" />
+      <entry key="D1" value="3187.3502184170197" />
+      <entry key="W1" value="5281.946406864073" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -201,6 +206,8 @@
       <workItem from="1788729568101" duration="17129000" />
       <workItem from="1788839829935" duration="8792000" />
       <workItem from="1788900034321" duration="13129000" />
+      <workItem from="1789014199245" duration="8143000" />
+      <workItem from="1789057233215" duration="9453000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -330,7 +337,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788927738382</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added t-spin detection and all-spin detection, but not working properly yet (doesn't check that last input is a spin)">
+      <option name="closed" value="true" />
+      <created>1789021789287</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1789021789287</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,12 +367,13 @@
     <MESSAGE value="Ready set go fixed and added pre-charging das" />
     <MESSAGE value="Two boards side by side each with customizable keybinds, right now controlled by same keys and both are 40 line sprint" />
     <MESSAGE value="Remaining lines display can't go below 0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remaining lines display can't go below 0" />
+    <MESSAGE value="Added t-spin detection and all-spin detection, but not working properly yet (doesn't check that last input is a spin)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added t-spin detection and all-spin detection, but not working properly yet (doesn't check that last input is a spin)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1788927784450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1789073471479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

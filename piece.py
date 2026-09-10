@@ -78,12 +78,15 @@ class Piece:
 
         if action == 'ghost':
             return -1 if collision else 0
+        # print(collision)
         if collision:
             if action in ('left', 'right', 'sd'):
                 x_change = 1 if action == 'left' else -1 if action == 'right' else 0
                 y_change = -1 if action == 'sd' else 0
                 self.x += x_change
                 self.y += y_change
+                if action != 'sd':
+                    return False
             else:
                 force_spin = False
                 kick_table = 'i' if self.type == 'i' else 'other'
@@ -93,32 +96,46 @@ class Piece:
                     valid_kick = True
                     self.x += kick[0]
                     self.y -= kick[1]
-                    for index, mino in enumerate(my_map):
+                    for map_index, mino in enumerate(my_map):
                         if mino:
-                            x = index % dimension + self.x
-                            y = index // dimension + self.y
+                            x = map_index % dimension + self.x
+                            y = map_index // dimension + self.y
                             if x < 0 or x > 9 or y > 39 or matrix[y][x]:
                                 valid_kick = False
                                 break
                     if valid_kick:
-                        force_spin = index == 4 and self.type == 't'
+                        force_spin = index == 3 and self.type == 't'
                         break
                     self.x -= kick[0]
                     self.y += kick[1]
+                revert = 0
                 if not valid_kick:
                     revert = 1 if action == 'cw' else -1 if action == 'ccw' else 2
                     self.rotation += revert
                 if action == 'cw' or action == 'ccw':
-                    return force_spin
+                    return force_spin, revert != 0
+                if action == '180':
+                    print(revert)
+                    return revert != 0
+        elif action in ('left', 'right'):
+            # print('how', collision)
+            return True
+
+        if action == '180':
+            return False
+
+        return False, False
 
     def lock_piece(self, matrix):
-        spin = 'none'
+        spin = ''
         t_corners = 0
         t_corners_faced = 0
         my_map = Piece.MINO_MAPS[self.type]
         dimension = int(sqrt(len(my_map[self.rotation])))
+        vertical_check = False
+        left_check = False
+        right_check = False
         for index, mino in enumerate(my_map[self.rotation]):
-            corner_filled = False
             x = index % dimension + self.x
             y = index // dimension + self.y
             if self.type == 't' and index in (0, 2, 6, 8):
@@ -128,11 +145,19 @@ class Piece:
                     t_corners_faced += 1 if self.rotation == 0 and index in (0, 2) or self.rotation == 1 and index in (0, 6) or self.rotation == 2 and index in (6, 8) or self.rotation == 3 and index in (2, 8) else 0
             if mino:
                 matrix[y][x] = self.type
-                if self.type != 't':
-                    if matrix[y - 1][x] and not my_map[self.rotation][index - dimension]:
-                        print(matrix[y - 1][x])
-                        spin = 'mini'
-            spin = 'none' if self.type == 't' and t_corners < 3 else f'{self.type.upper()}-spin' if t_corners_faced == 2 else f'Mini {self.type.upper()}-spin' if spin != 'none' else 'none'
+                if matrix[y - 1][x] and not my_map[self.rotation][index - dimension]:
+                    vertical_check = True
+                if x <= 0 or (matrix[y][x - 1] and not my_map[self.rotation][index - 1]):
+                    left_check = True
+                if x >= 9 or (matrix[y][x + 1] and (index >= (len(my_map[self.rotation]) - 1) or not my_map[self.rotation][index + 1])):
+                    right_check = True
+                if vertical_check and left_check and right_check:
+                    spin = 'Mini T-spin' if self.type == 't' else 'mini'
+
+        if self.type == 't':
+            spin = spin if t_corners < 3 else 'T-spin' if t_corners_faced == 2 else 'Mini T-spin'
+        else:
+            spin = f'{self.type.upper()}-spin' if t_corners_faced == 2 else f'Mini {self.type.upper()}-spin' if spin != '' else ''
         return matrix, spin
 
     def test_lockout(self, game, matrix):
