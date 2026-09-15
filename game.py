@@ -15,6 +15,7 @@ class Game:
         self.queue = queue
         self.current = Piece(self.queue.pieces[0], current=True)
         self.queue_pos = 1
+        self.garbage_queue_pos = 0
         self.soft_dropping = False
         self.locked_out = False
         self.pieces = 0
@@ -119,14 +120,15 @@ class Game:
                     # self.last_input = 'hd'
                     self.pieces += 1
                     if self.last_lines_cleared > 0:
-                        print(self.spin_type)
                         self.last_attack = self.calculate_attack(self.last_lines_cleared, self.spin_type)
                         self.attack += self.last_attack
                         self.combo += 1
-                        print(self.combo)
+                        self.handle_garbage()
                     else:
                         self.combo = 0
                         self.last_attack = 0
+
+
     def _hold(self):
         if self.hold:
             temp = self.hold
@@ -154,6 +156,7 @@ class Game:
             self.queue.reset()
         self.current = Piece(self.queue.pieces[0], current=True)
         self.queue_pos = 1
+        self.garbage_queue_pos = 0
         self.locked_out = False
         self.pieces = 0
         self.reset_time = pygame.time.get_ticks()
@@ -169,6 +172,7 @@ class Game:
         self.combo = 0
         self.b2b = 0
         self.attack = 0
+        self.last_attack = 0
 
     def drop(self):
         previous_y = None
@@ -203,6 +207,38 @@ class Game:
             attack += 1
         self.b2b = self.b2b + 1 if 'spin' in clear or lines == 4 else 0
         return attack
+
+    def handle_garbage(self):
+        attack = self.last_attack
+        while attack > 0 and self.player == 1:
+            if self.garbage:
+                if attack > self.garbage[0]:
+                    attack -= self.garbage.pop(0)
+                else:
+                    self.garbage[0] -= attack
+                    attack = 0
+            else:
+                self.opponent.garbage.append(attack)
+                attack = 0;
+
+        # Receive garbage
+        if self.garbage:
+            received = 0
+            while self.garbage and received < 8:
+                self.garbage_queue_pos += 1
+                if self.garbage_queue_pos >= len(self.queue.garbage_cols):
+                    self.queue.garbage_cols.append(random.randint(0, 9))
+                    self.queue.garbage_cols.append(random.randint(0, 9))
+                for _ in range(self.garbage[0]):
+                    if received == 8:
+                        break
+                    self.board.matrix.pop(0)
+                    self.board.matrix.append(['g' for _ in range(10)])
+                    self.board.matrix[39][self.queue.garbage_cols[self.garbage_queue_pos]] = None
+                    self.garbage[0] -= 1
+                    if self.garbage[0] == 0:
+                        self.garbage.pop(0)
+                    received += 1
 
 class MovementHandler:
     DAS = 75
@@ -266,6 +302,7 @@ class SharedQueue:
     def __init__(self):
         self.pieces = []
         self.generate_bag()
+        self.garbage_cols = []
 
     def generate_bag(self):
         bag = ['i', 'o', 'j', 'l', 's', 't', 'z']
@@ -274,4 +311,5 @@ class SharedQueue:
 
     def reset(self):
         self.pieces = []
+        self.garbage_cols = []
         self.generate_bag()
