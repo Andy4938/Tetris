@@ -5,17 +5,16 @@ import random
 
 class Game:
     SPINS = ['', 'Single', 'Double', 'Triple', 'Tetris']
-    def __init__(self, window_w, window_h, x, player):
+    def __init__(self, window_w, window_h, x, player, mode, queue, opponent=None):
         self.w = window_w
         self.h = window_h
         self.board = Board(self.w, self.h, x, 280,
                            3, 4, 'black', 'white')
         self.hold = None
         self.can_hold = True
-        self.queue = []
-        self.generate_bag()
-        self.current = Piece(self.queue[0], current=True)
-        self.queue.pop(0)
+        self.queue = queue
+        self.current = Piece(self.queue.pieces[0], current=True)
+        self.queue_pos = 1
         self.soft_dropping = False
         self.locked_out = False
         self.pieces = 0
@@ -31,6 +30,13 @@ class Game:
         self.force_spin = False
         self.player = player
         self.last_lines_cleared = 0
+        self.mode = mode
+        self.garbage = []
+        self.opponent = opponent
+        self.combo = 0
+        self.b2b = 0
+        self.attack = 0
+        self.last_attack = 0
 
         if player == 1:
             self.KEYBINDS = {
@@ -82,7 +88,6 @@ class Game:
                     self.current.rotation += 2
                     failed = self.current.collide(self.board.matrix, '180')
                     self.key_presses += 1
-                    print(failed)
                     if not failed:
                         self.last_input = '180'
                 if event.key == self.KEYBINDS['sd']:
@@ -91,11 +96,11 @@ class Game:
                 if event.key == self.KEYBINDS['hd']:
                     self.drop()
                     self.board.matrix, self.spin_type = self.current.lock_piece(self.board.matrix)
-                    self.current = Piece(self.queue[0])
+                    self.current = Piece(self.queue.pieces[self.queue_pos])
                     self.current.current = True
-                    self.queue.pop(0)
-                    if len(self.queue) < 6:
-                        self.generate_bag()
+                    self.queue_pos += 1
+                    if len(self.queue.pieces) - self.queue_pos < 6:
+                        self.queue.generate_bag()
                     self.can_hold = True
                     self.last_lines_cleared = self.clear_lines()
                     # if self.spin_type != 'none' and self.last_lines_cleared > 0:
@@ -113,7 +118,15 @@ class Game:
                     self.key_presses += 1
                     # self.last_input = 'hd'
                     self.pieces += 1
-
+                    if self.last_lines_cleared > 0:
+                        print(self.spin_type)
+                        self.last_attack = self.calculate_attack(self.last_lines_cleared, self.spin_type)
+                        self.attack += self.last_attack
+                        self.combo += 1
+                        print(self.combo)
+                    else:
+                        self.combo = 0
+                        self.last_attack = 0
     def _hold(self):
         if self.hold:
             temp = self.hold
@@ -124,8 +137,8 @@ class Game:
         else:
             self.hold = self.current
             self.hold.reset_pos()
-            self.current = Piece(self.queue[0], current=True)
-            self.queue.pop(0)
+            self.current = Piece(self.queue.pieces[self.queue_pos], current=True)
+            self.queue_pos += 1
 
     def generate_bag(self):
         bag = ['i', 'o', 'j', 'l', 's', 't', 'z']
@@ -137,10 +150,10 @@ class Game:
         self.board.matrix = [[None for _ in range(10)] for _ in range(40)]
         self.hold = None
         self.can_hold = True
-        self.queue = []
-        self.generate_bag()
-        self.current = Piece(self.queue[0], current=True)
-        self.queue.pop(0)
+        if self.player == 1:
+            self.queue.reset()
+        self.current = Piece(self.queue.pieces[0], current=True)
+        self.queue_pos = 1
         self.locked_out = False
         self.pieces = 0
         self.reset_time = pygame.time.get_ticks()
@@ -152,6 +165,10 @@ class Game:
         self.last_input = None
         self.force_spin = False
         self.last_lines_cleared = 0
+        self.garbage = []
+        self.combo = 0
+        self.b2b = 0
+        self.attack = 0
 
     def drop(self):
         previous_y = None
@@ -175,6 +192,17 @@ class Game:
                 self.board.matrix.insert(0, [None for _ in range(10)])
 
         return cleared_lines
+
+    def calculate_attack(self, lines, clear):
+        base = [0, 0, 1, 2, 4]
+        base_spin = [0, 2, 4, 6]
+        combo_table = []
+        attack = base_spin[lines] if clear == 'T-spin' else base[lines]
+        attack += int(self.combo // (1 + self.combo / 5) * (1 + attack))
+        if 'spin' in clear and self.b2b > 0:
+            attack += 1
+        self.b2b = self.b2b + 1 if 'spin' in clear or lines == 4 else 0
+        return attack
 
 class MovementHandler:
     DAS = 75
@@ -234,3 +262,16 @@ class MovementHandler:
                     break
             self.last_move = now
 
+class SharedQueue:
+    def __init__(self):
+        self.pieces = []
+        self.generate_bag()
+
+    def generate_bag(self):
+        bag = ['i', 'o', 'j', 'l', 's', 't', 'z']
+        random.shuffle(bag)
+        self.pieces.extend(bag)
+
+    def reset(self):
+        self.pieces = []
+        self.generate_bag()

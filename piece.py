@@ -115,7 +115,6 @@ class Piece:
                 if action == 'cw' or action == 'ccw':
                     return force_spin, revert != 0
                 if action == '180':
-                    print(revert)
                     return revert != 0
         elif action in ('left', 'right'):
             # print('how', collision)
@@ -167,7 +166,7 @@ class Piece:
             if mino:
                 x = index % dimension + self.x
                 y = index // dimension + self.y
-                if matrix[y][x] or game.lines_cleared >= 40:
+                if game.mode == 'sprint' and (matrix[y][x] or game.lines_cleared >= 40):
                     game.board.matrix = [['p' if item is not None else None for item in row] for row in matrix]
                     return True
         return False

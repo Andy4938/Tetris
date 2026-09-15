@@ -31,7 +31,8 @@ class Renderer:
         self._draw_ghost_piece(tetris.current, board)
         self._draw_current_piece(board, tetris.current)
         self._draw_matrix(board)
-        self._display_stats(tetris)
+        if tetris.mode == 'sprint' or 0 == 0:
+            self._display_stats(tetris)
         if not tetris.reset_animation_done:
             self._new_game(tetris)
 
@@ -87,7 +88,7 @@ class Renderer:
         self.screen.blit(next_text_surface, (q_start_x + 6, board.y - 2))
 
     def _draw_next_pieces(self, tetris, board):
-        for index, piece in enumerate(tetris.queue[:5]):
+        for index, piece in enumerate(tetris.queue.pieces[tetris.queue_pos:tetris.queue_pos + 5]):
             offset = 18.5 if piece == 'i' else 47 if  piece == 'o' else 34
             # factor = 2 if piece == 'i' else 1
             i_offset = 16 if piece == 'i' else 0
@@ -123,9 +124,6 @@ class Renderer:
     def _display_stats(self, game):
         stat_y_start = game.board.y + game.board.h / 3
         stat_x_start = game.board.x - 10
-        # Pieces
-        self._display_stat('Pieces', stat_x_start - 130, stat_y_start, is_label=True)
-        self._display_stat(str(game.pieces), stat_x_start - 40 - 19 * (len(str(game.pieces)) - 1), stat_y_start + 40)
         # Time
         time_raw = game.final_time if game.locked_out else pygame.time.get_ticks() - game.start_time
         hours = '' if time_raw < 3600000 else time_raw // 3600000
@@ -142,23 +140,48 @@ class Renderer:
         pps = f'{round(game.pieces / time_raw * 1000, 2):.2f}'
         self._display_stat('PPS', stat_x_start - 90, stat_y_start + 100, is_label=True)
         self._display_stat(pps, stat_x_start - 30 - 19 * (len(pps) - 1), stat_y_start + 140)
-        # KPP
-        kpp = '0.00' if game.pieces == 0 else f'{round(game.key_presses / game.pieces, 2):.2f}'
-        self._display_stat('KPP', stat_x_start - 90, stat_y_start + 200, is_label=True)
-        self._display_stat(kpp, stat_x_start - 30 - 19 * (len(kpp) - 1), stat_y_start + 240)
+        # Spin
+        if game.spin_type != '' or game.last_lines_cleared > 0:
+            self._display_stat(f'{game.spin_type} {game.SPINS[game.last_lines_cleared]}', game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) + len(game.SPINS[game.last_lines_cleared])), game.board.y + game.board.h + 20)
+        if game.mode == 'sprint':
+            self._display_sprint_stats(game, stat_x_start, stat_y_start)
+        if game.mode == 'versus':
+            self._display_versus_stats(game, stat_x_start, stat_y_start, time_raw)
+
+    def _dislpay_sprint_stats(self, game, stat_x_start, stat_y_start):
+        # Pieces
+        self._display_stat('Pieces', stat_x_start - 130, stat_y_start, is_label=True)
+        self._display_stat(str(game.pieces), stat_x_start - 40 - 19 * (len(str(game.pieces)) - 1), stat_y_start + 40)
         # Lines
         lines = str(game.lines_cleared)
         self._display_stat('Lines', game.board.x + game.board.w + 35, stat_y_start + 290, is_label=True)
         self._display_stat(lines, game.board.x + game.board.w + 65 - 8 * (len(lines) - 1), stat_y_start + 330)
-        # Lines left
+        # Lines Left
         lines_left = '0' if game.lines_cleared > 40 else str(40 - game.lines_cleared)
         lines_left_surface = self.assets.lines_left_font.render(lines_left, True,
-                                                          (255, 255, 255))
+                                                                (255, 255, 255))
         lines_left_surface.set_alpha((100))
-        self.screen.blit(lines_left_surface, (game.board.x + game.board.w / 2.5 - 50 * (len(lines_left) - 1), game.board.y + game.board.h / 8))
-        # Spin
-        if game.spin_type != '' or game.last_lines_cleared > 0:
-            self._display_stat(f'{game.spin_type} {game.SPINS[game.last_lines_cleared]}', game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) + len(game.SPINS[game.last_lines_cleared])), game.board.y + game.board.h + 20)
+        self.screen.blit(lines_left_surface, (game.board.x + game.board.w / 2.5 - 50 * (len(lines_left) - 1),
+                                              game.board.y + game.board.h / 8))
+        # KPP
+        kpp = '0.00' if game.pieces == 0 else f'{round(game.key_presses / game.pieces, 2):.2f}'
+        self._display_stat('KPP', stat_x_start - 90, stat_y_start + 200, is_label=True)
+        self._display_stat(kpp, stat_x_start - 30 - 19 * (len(kpp) - 1), stat_y_start + 240)
+
+    def _display_versus_stats(self, game, stat_x_start, stat_y_start, time_raw):
+        # Combo
+        if game.combo > 1:
+            self._display_stat(f'{game.combo - 1} Combo', stat_x_start - 162 - 19 * (len(str(game.combo - 1)) - 1), stat_y_start - 30)
+        # Attack
+        if game.last_attack > 0:
+            self._display_stat(f'+{game.last_attack} Attack', stat_x_start - 174 - 19 * (len(str(game.last_attack)) - 1), stat_y_start + 35)
+        # Pieces
+        self._display_stat('Pieces', game.board.x + game.board.w + 20, stat_y_start + 290, is_label=True)
+        self._display_stat(str(game.pieces), game.board.x + game.board.w + 65 - 8 * (len(str(game.pieces)) - 1), stat_y_start + 330)
+        # APM
+        apm = '0.00' if game.pieces == 0 else f'{round(game.attack / time_raw * 1000 * 60, 2):.2f}'
+        self._display_stat('APM', stat_x_start - 100, stat_y_start + 200, is_label=True)
+        self._display_stat(apm, stat_x_start - 30 - 19 * (len(apm) - 1), stat_y_start + 240)
 
     def _display_stat(self, text, x, y, is_label=False):
         text_surface = self.assets.stat_label_font.render(text, True, 'white') if is_label else self.assets.stat_font.render(text, True, 'white')
