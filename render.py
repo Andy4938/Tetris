@@ -26,13 +26,15 @@ class Renderer:
         self._draw_hold_box(board)
         if tetris.hold:
             self._draw_hold_piece(board, tetris.hold.type)
-        self._draw_queue_box(board)
+        self._draw_queue_box(tetris, board)
         self._draw_next_pieces(tetris, board)
         self._draw_ghost_piece(tetris.current, board)
         self._draw_current_piece(board, tetris.current)
         self._draw_matrix(board)
         if tetris.mode == 'sprint' or 0 == 0:
             self._display_stats(tetris)
+        if tetris.mode == 'versus':
+            self._draw_garbage_bar(tetris, board)
         if not tetris.reset_animation_done:
             self._new_game(tetris)
 
@@ -79,19 +81,34 @@ class Renderer:
         y_offset = 21 if hold == 'i' else 35
         Piece(hold).draw(self.screen, self.assets.skin, board.x - x_offset,  board.y + y_offset)
 
-    def _draw_queue_box(self, board):
-        q_start_x = board.x + board.w + board.border_thickness / 2
+    def _draw_queue_box(self, game, board):
+        x_offset = 15 if game.mode == 'versus' else 0
+        q_start_x = board.x + board.w + board.border_thickness / 2 + x_offset
         pygame.draw.rect(self.screen, board.border_color, (q_start_x, board.y - board.thickness, board.w / 2 + board.border_thickness,
                                            board.h * 0.81 + board.border_thickness * 2))
         pygame.draw.rect(self.screen, board.fill_color, (q_start_x + board.border_thickness, board.y + 20, board.w / 2 - board.border_thickness, board.h * 0.81 - 20))
         next_text_surface = self.assets.font.render('Next', True, 'black')
         self.screen.blit(next_text_surface, (q_start_x + 6, board.y - 2))
 
+    def _draw_garbage_bar(self, game, board):
+        garbage_start_x = board.x + board.w + board.border_thickness
+        pygame.draw.rect(self.screen, board.border_color,
+                         (garbage_start_x - board.border_thickness, board.y - board.thickness,
+                          15 + board.border_thickness * 2,
+                          board.h + board.border_thickness * 1.5))  # border
+        pygame.draw.rect(self.screen, board.fill_color,
+                         (garbage_start_x, board.y + board.border_thickness / 2, 15, board.h - board.border_thickness * 0.6))
+        pygame.draw.rect(self.screen, (255, 0, 0),
+                         (garbage_start_x, board.y + board.border_thickness / 2 + board.h - 1 - board.border_thickness * 0.6 - Piece.MINO_SIZE * sum(game.garbage), 15,
+                          Piece.MINO_SIZE * sum(game.garbage) + 0))
+
     def _draw_next_pieces(self, tetris, board):
         for index, piece in enumerate(tetris.queue.pieces[tetris.queue_pos:tetris.queue_pos + 5]):
             offset = 18.5 if piece == 'i' else 47 if  piece == 'o' else 34
             # factor = 2 if piece == 'i' else 1
             i_offset = 16 if piece == 'i' else 0
+            if tetris.mode == 'versus':
+                offset += 15
             x = board.x + board.w + offset
             y = board.y + 40 + Piece.MINO_SIZE * index * 3 - i_offset
             Piece(piece).draw(self.screen, self.assets.skin, x, y)
@@ -142,13 +159,14 @@ class Renderer:
         self._display_stat(pps, stat_x_start - 30 - 19 * (len(pps) - 1), stat_y_start + 140)
         # Spin
         if game.spin_type != '' or game.last_lines_cleared > 0:
-            self._display_stat(f'{game.spin_type} {game.SPINS[game.last_lines_cleared]}', game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) + len(game.SPINS[game.last_lines_cleared])), game.board.y + game.board.h + 20)
+            pc_text = 'Perfect Clear' if game.pc else ''
+            self._display_stat(f'{game.spin_type} {game.SPINS[game.last_lines_cleared]} {pc_text}', game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) + len(game.SPINS[game.last_lines_cleared]) + len(pc_text)), game.board.y + game.board.h + 20)
         if game.mode == 'sprint':
             self._display_sprint_stats(game, stat_x_start, stat_y_start)
         if game.mode == 'versus':
             self._display_versus_stats(game, stat_x_start, stat_y_start, time_raw)
 
-    def _dislpay_sprint_stats(self, game, stat_x_start, stat_y_start):
+    def _display_sprint_stats(self, game, stat_x_start, stat_y_start):
         # Pieces
         self._display_stat('Pieces', stat_x_start - 130, stat_y_start, is_label=True)
         self._display_stat(str(game.pieces), stat_x_start - 40 - 19 * (len(str(game.pieces)) - 1), stat_y_start + 40)
@@ -176,8 +194,8 @@ class Renderer:
         if game.last_attack > 0:
             self._display_stat(f'+{game.last_attack} Attack', stat_x_start - 174 - 19 * (len(str(game.last_attack)) - 1), stat_y_start + 35)
         # Pieces
-        self._display_stat('Pieces', game.board.x + game.board.w + 20, stat_y_start + 290, is_label=True)
-        self._display_stat(str(game.pieces), game.board.x + game.board.w + 65 - 8 * (len(str(game.pieces)) - 1), stat_y_start + 330)
+        self._display_stat('Pieces', game.board.x + game.board.w + 35, stat_y_start + 290, is_label=True)
+        self._display_stat(str(game.pieces), game.board.x + game.board.w + 80 - 8 * (len(str(game.pieces)) - 1), stat_y_start + 330)
         # APM
         apm = '0.00' if game.pieces == 0 else f'{round(game.attack / time_raw * 1000 * 60, 2):.2f}'
         self._display_stat('APM', stat_x_start - 100, stat_y_start + 200, is_label=True)

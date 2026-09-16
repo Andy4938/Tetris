@@ -2,6 +2,7 @@ import pygame
 from board import Board
 from piece import Piece
 import random
+from math import log
 
 class Game:
     SPINS = ['', 'Single', 'Double', 'Triple', 'Tetris']
@@ -38,6 +39,7 @@ class Game:
         self.b2b = 0
         self.attack = 0
         self.last_attack = 0
+        self.pc = False
 
         if player == 1:
             self.KEYBINDS = {
@@ -120,14 +122,17 @@ class Game:
                     # self.last_input = 'hd'
                     self.pieces += 1
                     if self.last_lines_cleared > 0:
+                        self.pc = True
+                        for row in self.board.matrix:
+                            if row != [None for _ in range(10)]:
+                                self.pc = False
                         self.last_attack = self.calculate_attack(self.last_lines_cleared, self.spin_type)
                         self.attack += self.last_attack
                         self.combo += 1
-                        self.handle_garbage()
                     else:
                         self.combo = 0
                         self.last_attack = 0
-
+                    self.handle_garbage()
 
     def _hold(self):
         if self.hold:
@@ -202,15 +207,16 @@ class Game:
         base_spin = [0, 2, 4, 6]
         combo_table = []
         attack = base_spin[lines] if clear == 'T-spin' else base[lines]
-        attack += int(self.combo // (1 + self.combo / 5) * (1 + attack))
+        attack += int(self.combo // (1 + self.combo / 5) * (log(2 + attack, 2)))
         if 'spin' in clear and self.b2b > 0:
             attack += 1
         self.b2b = self.b2b + 1 if 'spin' in clear or lines == 4 else 0
+        attack += 7 if self.pc else 0
         return attack
 
     def handle_garbage(self):
         attack = self.last_attack
-        while attack > 0 and self.player == 1:
+        while attack > 0 and self.player > 1:
             if self.garbage:
                 if attack > self.garbage[0]:
                     attack -= self.garbage.pop(0)
@@ -219,10 +225,12 @@ class Game:
                     attack = 0
             else:
                 self.opponent.garbage.append(attack)
-                attack = 0;
+                attack = 0
 
         # Receive garbage
-        if self.garbage:
+        if self.garbage and self.last_lines_cleared == 0:
+            if len(self.garbage) > 0 and self.garbage[0] == 0:
+                self.garbage.pop(0)
             received = 0
             while self.garbage and received < 8:
                 self.garbage_queue_pos += 1

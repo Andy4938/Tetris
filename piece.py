@@ -146,10 +146,16 @@ class Piece:
                 matrix[y][x] = self.type
                 if matrix[y - 1][x] and not my_map[self.rotation][index - dimension]:
                     vertical_check = True
-                if x <= 0 or (matrix[y][x - 1] and not my_map[self.rotation][index - 1]):
+                # print(f'{vertical_check} vertical_check')
+                left_mino = False if index % dimension == 0 else True
+                if x <= 0 or (matrix[y][x - 1] and (not left_mino or not my_map[self.rotation][index - 1])):
                     left_check = True
-                if x >= 9 or (matrix[y][x + 1] and (index >= (len(my_map[self.rotation]) - 1) or not my_map[self.rotation][index + 1])):
+                # print(f'{left_check} left_check')
+                right_mino = None if (index + 1) % dimension == 0 else True
+                # and (index >= (len(my_map[self.rotation]) - 1)
+                if x >= 9 or (matrix[y][x + 1] and (not right_mino or not my_map[self.rotation][index + 1])):
                     right_check = True
+                # print(f'{right_check} right_check')
                 if vertical_check and left_check and right_check:
                     spin = 'Mini T-spin' if self.type == 't' else 'mini'
 

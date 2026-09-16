@@ -15,8 +15,9 @@ renderer1 = Renderer(screen, WINDOW_W, WINDOW_H)
 input_handler1 = MovementHandler()
 if mode == 'versus':
     tetris_p1 = Game(WINDOW_W, WINDOW_H, WINDOW_W / 5.95, 1, mode, queue)
-    tetris_p2 = Game(WINDOW_W, WINDOW_H, WINDOW_W / 1.55, 2, mode, queue, tetris_p1)
+    tetris_p2 = Game(WINDOW_W, WINDOW_H, WINDOW_W / 1.55, 2, mode, queue)
     tetris_p1.opponent = tetris_p2
+    tetris_p2.opponent = tetris_p1
     renderer1 = Renderer(screen, WINDOW_W, WINDOW_H)
     renderer2 = Renderer(screen, WINDOW_W, WINDOW_H)
     input_handler1 = MovementHandler()
