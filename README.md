@@ -1,2 +1,2 @@
 # Tetris
-Andy Wu, 
+Andy Wu, Tommy Tan
