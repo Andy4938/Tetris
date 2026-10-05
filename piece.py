@@ -144,7 +144,8 @@ class Piece:
                     t_corners_faced += 1 if self.rotation == 0 and index in (0, 2) or self.rotation == 1 and index in (0, 6) or self.rotation == 2 and index in (6, 8) or self.rotation == 3 and index in (2, 8) else 0
             if mino:
                 matrix[y][x] = self.type
-                if matrix[y - 1][x] and not my_map[self.rotation][index - dimension]:
+                # print(f'{my_map[self.rotation][index - dimension]}, {index - dimension}')
+                if matrix[y - 1][x] and (index - dimension < 0 or not my_map[self.rotation][index - dimension]):
                     vertical_check = True
                 # print(f'{vertical_check} vertical_check')
                 left_mino = False if index % dimension == 0 else True
@@ -155,7 +156,7 @@ class Piece:
                 # and (index >= (len(my_map[self.rotation]) - 1)
                 if x >= 9 or (matrix[y][x + 1] and (not right_mino or not my_map[self.rotation][index + 1])):
                     right_check = True
-                # print(f'{right_check} right_check')
+                print(f'right check: {right_check} left check: {left_check} vertical check: {vertical_check}')
                 if vertical_check and left_check and right_check:
                     spin = 'Mini T-spin' if self.type == 't' else 'mini'
 

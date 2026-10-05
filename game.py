@@ -109,15 +109,12 @@ class Game:
                     # if self.spin_type != 'none' and self.last_lines_cleared > 0:
                         # self.spin_type = f'{self.spin_type}'
                     if self.force_spin and self.spin_type[:4] == 'Mini':
-                        self.spin_type = self.spin_type[4:]
+                        self.spin_type = self.spin_type[5:]
                     if not (self.last_input in ('cw', 'ccw', '180')):
                         self.spin_type = ''
                     # if self.player == 1:
                         # print(self.last_input)
                     self.lines_cleared += self.last_lines_cleared
-                    self.locked_out = self.current.test_lockout(self, self.board.matrix)
-                    if self.locked_out:
-                        self.final_time = pygame.time.get_ticks() - self.start_time
                     self.key_presses += 1
                     # self.last_input = 'hd'
                     self.pieces += 1
@@ -126,6 +123,7 @@ class Game:
                         for row in self.board.matrix:
                             if row != [None for _ in range(10)]:
                                 self.pc = False
+                        print(self.spin_type)
                         self.last_attack = self.calculate_attack(self.last_lines_cleared, self.spin_type)
                         self.attack += self.last_attack
                         self.combo += 1
@@ -133,6 +131,9 @@ class Game:
                         self.combo = 0
                         self.last_attack = 0
                     self.handle_garbage()
+                    self.locked_out = self.current.test_lockout(self, self.board.matrix)
+                    if self.locked_out:
+                        self.final_time = pygame.time.get_ticks() - self.start_time
 
     def _hold(self):
         if self.hold:
@@ -208,9 +209,11 @@ class Game:
         combo_table = []
         attack = base_spin[lines] if clear == 'T-spin' else base[lines]
         attack += int(self.combo // (1 + self.combo / 5) * (log(2 + attack, 2)))
-        if 'spin' in clear and self.b2b > 0:
+        if ('spin' in clear or lines == 4) and self.b2b > 0:
             attack += 1
         self.b2b = self.b2b + 1 if 'spin' in clear or lines == 4 else 0
+        # print(lines)
+        # print(self.b2b)
         attack += 7 if self.pc else 0
         return attack
 

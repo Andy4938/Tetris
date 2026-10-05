@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Garbage sending now works! Right now sending is disabled for player 2" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,23 +43,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.2635445890021815" />
-      <entry key="MS500" value="3.0608120113275428" />
-      <entry key="S2" value="7.424659193944792" />
-      <entry key="S5" value="12.708180779103824" />
-      <entry key="S10" value="16.617586746443198" />
-      <entry key="S30" value="20.61695491373486" />
-      <entry key="S60" value="22.490837532078658" />
-      <entry key="M2" value="25.01501348207895" />
-      <entry key="M5" value="33.87261777300032" />
-      <entry key="M10" value="57.197174010961334" />
-      <entry key="M15" value="83.3809714978614" />
-      <entry key="M30" value="161.82898496414902" />
-      <entry key="H1" value="304.36046272653937" />
-      <entry key="H2" value="531.2126600541307" />
-      <entry key="H4" value="921.8396733700908" />
-      <entry key="D1" value="3601.9838761090136" />
-      <entry key="W1" value="5936.281304630479" />
+      <entry key="MS100" value="1.0000001594933934" />
+      <entry key="MS500" value="1.0440662663703282" />
+      <entry key="S2" value="1.833692998133872" />
+      <entry key="S5" value="3.280033713286298" />
+      <entry key="S10" value="4.3426035025357095" />
+      <entry key="S30" value="5.367518732647876" />
+      <entry key="S60" value="5.835090073926398" />
+      <entry key="M2" value="7.1540404737430565" />
+      <entry key="M5" value="11.190547232132438" />
+      <entry key="M10" value="14.663943361250796" />
+      <entry key="M15" value="16.949976330892586" />
+      <entry key="M30" value="27.83431272685508" />
+      <entry key="H1" value="69.16981930005112" />
+      <entry key="H2" value="186.2513063757166" />
+      <entry key="H4" value="494.3746797665155" />
+      <entry key="D1" value="3275.018595092126" />
+      <entry key="W1" value="6103.629296839594" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -62,37 +67,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="5.742964628536736E-109" />
-      <entry key="S60" value="7.578235037617072E-55" />
-      <entry key="M2" value="8.70530587493455E-28" />
-      <entry key="M5" value="1.4993865616775465E-11" />
-      <entry key="M10" value="3.872191319753762E-6" />
-      <entry key="M15" value="2.4658758387688574E-4" />
-      <entry key="M30" value="0.015704466635280342" />
-      <entry key="H1" value="0.12821641827936045" />
-      <entry key="H2" value="0.49707502837728756" />
-      <entry key="H4" value="1.7109103440921214" />
-      <entry key="D1" value="16.00603963562143" />
-      <entry key="W1" value="32.51350591576432" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="1.1895093445122114E-175" />
+      <entry key="M2" value="3.4489264192096014E-88" />
+      <entry key="M5" value="1.0353175397067913E-35" />
+      <entry key="M10" value="3.2176350627547135E-18" />
+      <entry key="M15" value="2.179504940453156E-12" />
+      <entry key="M30" value="1.4764424299964797E-6" />
+      <entry key="H1" value="0.0012431980030245962" />
+      <entry key="H2" value="0.04894634618616723" />
+      <entry key="H4" value="0.5368790011559041" />
+      <entry key="D1" value="13.19447401882782" />
+      <entry key="W1" value="31.628548239341686" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2479568580444635" />
-      <entry key="MS500" value="3.0551883463364056" />
-      <entry key="S2" value="7.421726138612165" />
-      <entry key="S5" value="12.706242258825174" />
-      <entry key="S10" value="16.61632677122754" />
-      <entry key="S30" value="20.615371355661303" />
-      <entry key="S60" value="22.487140645560775" />
-      <entry key="M2" value="25.009607897763317" />
-      <entry key="M5" value="33.862269424485675" />
-      <entry key="M10" value="57.17975133220477" />
-      <entry key="M15" value="83.36060549782376" />
-      <entry key="M30" value="161.82087800239003" />
-      <entry key="H1" value="304.46424563443645" />
-      <entry key="H2" value="531.6879179248277" />
-      <entry key="H4" value="923.531862947734" />
-      <entry key="D1" value="3617.976268556257" />
-      <entry key="W1" value="5968.791460692975" />
+      <entry key="MS100" value="0.9265882066336805" />
+      <entry key="MS500" value="1.0279794249755803" />
+      <entry key="S2" value="1.7875328188549082" />
+      <entry key="S5" value="3.2072017829347197" />
+      <entry key="S10" value="4.283870512328048" />
+      <entry key="S30" value="5.340498516974503" />
+      <entry key="S60" value="5.820129326215315" />
+      <entry key="M2" value="7.14498979072321" />
+      <entry key="M5" value="11.185178447239295" />
+      <entry key="M10" value="14.660496461847986" />
+      <entry key="M15" value="16.947273554878247" />
+      <entry key="M30" value="27.831687722410994" />
+      <entry key="H1" value="69.16662987821493" />
+      <entry key="H2" value="186.2931348193622" />
+      <entry key="H4" value="494.90163252130304" />
+      <entry key="D1" value="3288.200773817084" />
+      <entry key="W1" value="6135.2544249857665" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -207,6 +212,10 @@
       <workItem from="1789363569468" duration="1363000" />
       <workItem from="1789435088798" duration="4124000" />
       <workItem from="1789450205011" duration="7760000" />
+      <workItem from="1789507317396" duration="7973000" />
+      <workItem from="1790027095101" duration="2349000" />
+      <workItem from="1790092781301" duration="1137000" />
+      <workItem from="1790630941046" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -368,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789457740799</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection">
+      <option name="closed" value="true" />
+      <created>1789524102035</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1789524102035</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,12 +411,13 @@
     <MESSAGE value="Spin detection is now fully working" />
     <MESSAGE value="Attack calculation and combos fully impolemented but no garbage sending yet" />
     <MESSAGE value="Garbage sending now works! Right now sending is disabled for player 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Garbage sending now works! Right now sending is disabled for player 2" />
+    <MESSAGE value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1789457760257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1790030140318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

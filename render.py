@@ -160,7 +160,8 @@ class Renderer:
         # Spin
         if game.spin_type != '' or game.last_lines_cleared > 0:
             pc_text = 'Perfect Clear' if game.pc else ''
-            self._display_stat(f'{game.spin_type} {game.SPINS[game.last_lines_cleared]} {pc_text}', game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) + len(game.SPINS[game.last_lines_cleared]) + len(pc_text)), game.board.y + game.board.h + 20)
+            b2b_text = 'B2B' if game.b2b > 1 else ''
+            self._display_stat(f'{b2b_text} {game.spin_type} {game.SPINS[game.last_lines_cleared]} {pc_text}', game.board.x + game.board.w / 2 - 9 * (len(str(game.spin_type)) + len(game.SPINS[game.last_lines_cleared]) + len(pc_text)), game.board.y + game.board.h + 20)
         if game.mode == 'sprint':
             self._display_sprint_stats(game, stat_x_start, stat_y_start)
         if game.mode == 'versus':
