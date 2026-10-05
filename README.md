@@ -1,2 +1,2 @@
 # Tetris
-Andy Wu, Tommy Tan, Jonathan Wang
+Andy Wu, Tommy Tan, Jonathan Wang, David Song
