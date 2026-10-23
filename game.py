@@ -1,12 +1,13 @@
 import pygame
 from board import Board
 from piece import Piece
+from keybinds import Keybinds
 import random
 from math import log
 
 class Game:
     SPINS = ['', 'Single', 'Double', 'Triple', 'Tetris']
-    def __init__(self, window_w, window_h, x, player, mode, queue, opponent=None):
+    def __init__(self, window_w, window_h, x, player, mode, queue, opponent=None, keybinds=None):
         self.w = window_w
         self.h = window_h
         self.board = Board(self.w, self.h, x, 280,
@@ -41,28 +42,7 @@ class Game:
         self.last_attack = 0
         self.pc = False
 
-        if player == 1:
-            self.KEYBINDS = {
-                'right': pygame.K_RIGHTBRACKET,
-                'left': pygame.K_p,
-                'hold': pygame.K_c,
-                'cw': pygame.K_LEFTBRACKET,
-                'ccw': pygame.K_z,
-                '180': pygame.K_LSHIFT,
-                'hd': pygame.K_SPACE,
-                'sd': pygame.K_RALT
-            }
-        else:
-            self.KEYBINDS = {
-                'right': pygame.K_RIGHTBRACKET,
-                'left': pygame.K_p,
-                'hold': pygame.K_c,
-                'cw': pygame.K_LEFTBRACKET,
-                'ccw': pygame.K_z,
-                '180': pygame.K_LSHIFT,
-                'hd': pygame.K_SPACE,
-                'sd': pygame.K_RALT
-            }
+        self.KEYBINDS = keybinds if keybinds else dict(Keybinds.DEFAULTS[player])
 
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
@@ -254,11 +234,13 @@ class Game:
 class MovementHandler:
     DAS = 75
     ARR = 0
-    def __init__(self):
+    def __init__(self, das=DAS, arr=ARR):
+        self.DAS = das
+        self.ARR = arr
         self.held_dir = None
         self.press_time = 0
         self.last_move = 0
-        self.instant = (MovementHandler.ARR == 0)
+        self.instant = (self.ARR == 0)
 
     def handle_event(self, event, game):
         if not game.locked_out:
