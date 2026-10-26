@@ -1,0 +1,153 @@
+"""Move generation for the L piece in a game with NO gravity.
+
+Rules assumed (edit the CONFIG section if your game differs):
+  * The piece never falls by itself.
+  * SPACE drops the piece straight down until it locks (hard drop).
+  * Keys only shift/rotate the piece while it is held at its current height.
+  * There is no soft drop, so every placement is: some shifts/rotations, then SPACE.
+
+Board: list of rows, row 0 = top. board[r][c] truthy = filled.
+A piece state is (row, col, rot): (row, col) is the top-left of its 3x3 box.
+rot: 0 = spawn, 1 = R (cw), 2 = 180, 3 = L (ccw).
+"""
+from collections import deque
+
+# ---------------------------------------------------------------- CONFIG ----
+SPAWN = (0, 3, 0)      # row, col, rot for a 10-wide board
+USE_KICKS = True       # True: SRS wall kicks. False: a rotation must fit in place.
+
+# Abstract inputs -> the keys your game reads. ASSUMPTION: check these!
+KEY_BINDINGS = {
+    "LEFT": ("left", "a"),
+    "RIGHT": ("right", "d"),
+    "ROTATE_CW": ("up", "w"),
+    "ROTATE_CCW": ("down", "s"),
+    "DROP": ("space",),
+}
+# ---------------------------------------------------------------------------
+
+# (row, col) offsets inside the 3x3 box
+L_CELLS = [
+    [(0, 2), (1, 0), (1, 1), (1, 2)],  # 0
+    [(0, 1), (1, 1), (2, 1), (2, 2)],  # R
+    [(1, 0), (1, 1), (1, 2), (2, 0)],  # 2
+    [(0, 0), (0, 1), (1, 1), (2, 1)],  # L
+]
+
+# SRS JLSTZ kicks, (dx, dy) with y pointing UP, keyed by (from, to)
+KICKS = {
+    (0, 1): [(0, 0), (-1, 0), (-1, 1), (0, -2), (-1, -2)],
+    (1, 0): [(0, 0), (1, 0), (1, -1), (0, 2), (1, 2)],
+    (1, 2): [(0, 0), (1, 0), (1, -1), (0, 2), (1, 2)],
+    (2, 1): [(0, 0), (-1, 0), (-1, 1), (0, -2), (-1, -2)],
+    (2, 3): [(0, 0), (1, 0), (1, 1), (0, -2), (1, -2)],
+    (3, 2): [(0, 0), (-1, 0), (-1, -1), (0, 2), (-1, 2)],
+    (3, 0): [(0, 0), (-1, 0), (-1, -1), (0, 2), (-1, 2)],
+    (0, 3): [(0, 0), (1, 0), (1, 1), (0, -2), (1, -2)],
+}
+
+
+def cells(state):
+    r, c, rot = state
+    return [(r + dr, c + dc) for dr, dc in L_CELLS[rot]]
+
+
+def fits(board, state):
+    h, w = len(board), len(board[0])
+    for r, c in cells(state):
+        if r < 0 or r >= h or c < 0 or c >= w or board[r][c]:
+            return False
+    return True
+
+
+def rotate(board, state, direction):
+    """Rotate (+1 cw, -1 ccw), with SRS kicks if enabled. New state or None."""
+    r, c, rot = state
+    new_rot = (rot + direction) % 4
+    offsets = KICKS[(rot, new_rot)] if USE_KICKS else [(0, 0)]
+    for dx, dy in offsets:
+        cand = (r - dy, c + dx, new_rot)
+        if fits(board, cand):
+            return cand
+    return None
+
+
+def hard_drop(board, state):
+    """Where the piece locks when SPACE is pressed from `state`."""
+    r, c, rot = state
+    while fits(board, (r + 1, c, rot)):
+        r += 1
+    return (r, c, rot)
+
+
+def generate_moves(board, spawn=SPAWN):
+    """Return {locked_state: [inputs]} for every placement the player can reach.
+
+    Inputs are 'LEFT', 'RIGHT', 'ROTATE_CW', 'ROTATE_CCW', then a final 'DROP'.
+    Search is breadth-first over shifts and rotations only (no gravity, no soft
+    drop), so each input list is the shortest one for that placement. Different
+    routes that lock into the same cells are merged.
+    """
+    if not fits(board, spawn):
+        return {}  # spawn blocked: game over
+    seen = {spawn: []}
+    queue = deque([spawn])
+    placements = {}
+    while queue:
+        s = queue.popleft()
+        path = seen[s]
+
+        final = hard_drop(board, s)
+        key = frozenset(cells(final))
+        if key not in placements:  # BFS order => first hit is the shortest
+            placements[key] = (final, path + ["DROP"])
+
+        r, c, rot = s
+        nexts = [
+            ("LEFT", (r, c - 1, rot) if fits(board, (r, c - 1, rot)) else None),
+            ("RIGHT", (r, c + 1, rot) if fits(board, (r, c + 1, rot)) else None),
+            ("ROTATE_CW", rotate(board, s, 1)),
+            ("ROTATE_CCW", rotate(board, s, -1)),
+        ]
+        for name, ns in nexts:
+            if ns is not None and ns not in seen:
+                seen[ns] = path + [name]
+                queue.append(ns)
+    return {final: path for final, path in placements.values()}
+
+
+def apply_move(board, state):
+    """Return (new_board, lines_cleared) after locking the piece."""
+    new = [row[:] for row in board]
+    for r, c in cells(state):
+        new[r][c] = 1
+    kept = [row for row in new if not all(row)]
+    cleared = len(new) - len(kept)
+    w = len(board[0])
+    return [[0] * w for _ in range(cleared)] + kept, cleared
+
+
+def to_keys(inputs, index=0):
+    """Turn abstract inputs into key names (index 0 = arrows, 1 = WASD)."""
+    return [KEY_BINDINGS[i][min(index, len(KEY_BINDINGS[i]) - 1)] for i in inputs]
+
+
+if __name__ == "__main__":
+    empty = [[0] * 10 for _ in range(20)]
+    moves = generate_moves(empty)
+    print("empty board placements:", len(moves))  # expected 34 (8+9+8+9)
+
+    # Ledge over cols 0-5 with a gap under it. With no soft drop, the gap
+    # can't be reached: SPACE falls straight down and lands on the ledge.
+    b = [[0] * 10 for _ in range(20)]
+    b[19] = [1] * 10
+    for c in range(6):
+        b[17][c] = 1
+    for s, p in sorted(generate_moves(b).items()):
+        assert all(r < 17 or c >= 6 for r, c in cells(s)), "L went under the ledge!"
+    print("ledge test passed")
+
+    # Spawn blocked
+    full_top = [[1] * 10] + [[0] * 10 for _ in range(19)]
+    assert generate_moves(full_top) == {}
+    print("blocked spawn test passed")
