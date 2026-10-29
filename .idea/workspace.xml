@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection">
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/movegen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="15" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -23,7 +27,13 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -43,61 +53,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000001594933934" />
-      <entry key="MS500" value="1.0440662663703282" />
-      <entry key="S2" value="1.833692998133872" />
-      <entry key="S5" value="3.280033713286298" />
-      <entry key="S10" value="4.3426035025357095" />
-      <entry key="S30" value="5.367518732647876" />
-      <entry key="S60" value="5.835090073926398" />
-      <entry key="M2" value="7.1540404737430565" />
-      <entry key="M5" value="11.190547232132438" />
-      <entry key="M10" value="14.663943361250796" />
-      <entry key="M15" value="16.949976330892586" />
-      <entry key="M30" value="27.83431272685508" />
-      <entry key="H1" value="69.16981930005112" />
-      <entry key="H2" value="186.2513063757166" />
-      <entry key="H4" value="494.3746797665155" />
-      <entry key="D1" value="3275.018595092126" />
-      <entry key="W1" value="6103.629296839594" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0000011932346111" />
+      <entry key="S60" value="1.004256803563365" />
+      <entry key="M2" value="1.2980970707944937" />
+      <entry key="M5" value="7.152399900979428" />
+      <entry key="M10" value="24.77979321469117" />
+      <entry key="M15" value="44.50029846941275" />
+      <entry key="M30" value="102.47205603364287" />
+      <entry key="H1" value="196.59172032563373" />
+      <entry key="H2" value="345.64391580024835" />
+      <entry key="H4" value="630.3586022294595" />
+      <entry key="D1" value="3403.726552616268" />
+      <entry key="W1" value="6629.343771540298" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="1.1895093445122114E-175" />
-      <entry key="M2" value="3.4489264192096014E-88" />
-      <entry key="M5" value="1.0353175397067913E-35" />
-      <entry key="M10" value="3.2176350627547135E-18" />
-      <entry key="M15" value="2.179504940453156E-12" />
-      <entry key="M30" value="1.4764424299964797E-6" />
-      <entry key="H1" value="0.0012431980030245962" />
-      <entry key="H2" value="0.04894634618616723" />
-      <entry key="H4" value="0.5368790011559041" />
-      <entry key="D1" value="13.19447401882782" />
-      <entry key="W1" value="31.628548239341686" />
+      <entry key="S2" value="4.696052316559164E-258" />
+      <entry key="S5" value="1.1713675011044574E-103" />
+      <entry key="S10" value="3.422524654556134E-52" />
+      <entry key="S30" value="6.994911032230977E-18" />
+      <entry key="S60" value="2.6447894116982134E-9" />
+      <entry key="M2" value="5.14275160949682E-5" />
+      <entry key="M5" value="0.019252104905955403" />
+      <entry key="M10" value="0.138751954602288" />
+      <entry key="M15" value="0.26801518861139295" />
+      <entry key="M30" value="0.5177018342381043" />
+      <entry key="H1" value="0.7195388378122026" />
+      <entry key="H2" value="0.8550201660958876" />
+      <entry key="H4" value="1.1207856614994334" />
+      <entry key="D1" value="12.176628415195646" />
+      <entry key="W1" value="31.890859034878034" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9265882066336805" />
-      <entry key="MS500" value="1.0279794249755803" />
-      <entry key="S2" value="1.7875328188549082" />
-      <entry key="S5" value="3.2072017829347197" />
-      <entry key="S10" value="4.283870512328048" />
-      <entry key="S30" value="5.340498516974503" />
-      <entry key="S60" value="5.820129326215315" />
-      <entry key="M2" value="7.14498979072321" />
-      <entry key="M5" value="11.185178447239295" />
-      <entry key="M10" value="14.660496461847986" />
-      <entry key="M15" value="16.947273554878247" />
-      <entry key="M30" value="27.831687722410994" />
-      <entry key="H1" value="69.16662987821493" />
-      <entry key="H2" value="186.2931348193622" />
-      <entry key="H4" value="494.90163252130304" />
-      <entry key="D1" value="3288.200773817084" />
-      <entry key="W1" value="6135.2544249857665" />
+      <entry key="MS100" value="0.9330329915368074" />
+      <entry key="MS500" value="0.9862327044933592" />
+      <entry key="S2" value="0.9965402628278678" />
+      <entry key="S5" value="0.9986146661010289" />
+      <entry key="S10" value="0.9993070929904525" />
+      <entry key="S30" value="0.9997701619366745" />
+      <entry key="S60" value="1.0041254182104393" />
+      <entry key="M2" value="1.2974269612580491" />
+      <entry key="M5" value="7.164026906728394" />
+      <entry key="M10" value="24.90193805306283" />
+      <entry key="M15" value="44.74785343614168" />
+      <entry key="M30" value="102.96717430444325" />
+      <entry key="H1" value="197.29082082859915" />
+      <entry key="H2" value="346.4816588514994" />
+      <entry key="H4" value="631.4643999772004" />
+      <entry key="D1" value="3415.8901241874723" />
+      <entry key="W1" value="6661.230889872171" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -126,7 +136,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;move-gen-t-piece&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/andywu/PycharmProjects/Tetris&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -385,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789524102035</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage">
+      <option name="closed" value="true" />
+      <created>1791236746790</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1791236746790</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +430,8 @@
     <MESSAGE value="Attack calculation and combos fully impolemented but no garbage sending yet" />
     <MESSAGE value="Garbage sending now works! Right now sending is disabled for player 2" />
     <MESSAGE value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
+    <MESSAGE value="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -3,6 +3,7 @@ from board import Board
 from piece import Piece
 import random
 from math import log
+from movegen import Movegen
 
 class Game:
     SPINS = ['', 'Single', 'Double', 'Triple', 'Tetris']
@@ -40,6 +41,7 @@ class Game:
         self.attack = 0
         self.last_attack = 0
         self.pc = False
+        self.mg = Movegen(self.board.matrix)
 
         if player == 1:
             self.KEYBINDS = {
@@ -75,6 +77,7 @@ class Game:
                         self._hold()
                         self.can_hold = False
                         self.last_input = 'hold'
+                        self.mg.generate(self.current.type)
                 if event.key == self.KEYBINDS['cw']:
                     self.current.rotation -= 1
                     self.force_spin, failed = self.current.collide(self.board.matrix, 'cw')
@@ -123,7 +126,7 @@ class Game:
                         for row in self.board.matrix:
                             if row != [None for _ in range(10)]:
                                 self.pc = False
-                        print(self.spin_type)
+                        # print(self.spin_type)
                         self.last_attack = self.calculate_attack(self.last_lines_cleared, self.spin_type)
                         self.attack += self.last_attack
                         self.combo += 1
@@ -132,6 +135,7 @@ class Game:
                         self.last_attack = 0
                     self.handle_garbage()
                     self.locked_out = self.current.test_lockout(self, self.board.matrix)
+                    self.mg.generate(self.current.type)
                     if self.locked_out:
                         self.final_time = pygame.time.get_ticks() - self.start_time
 

@@ -156,7 +156,7 @@ class Piece:
                 # and (index >= (len(my_map[self.rotation]) - 1)
                 if x >= 9 or (matrix[y][x + 1] and (not right_mino or not my_map[self.rotation][index + 1])):
                     right_check = True
-                print(f'right check: {right_check} left check: {left_check} vertical check: {vertical_check}')
+                # print(f'right check: {right_check} left check: {left_check} vertical check: {vertical_check}')
                 if vertical_check and left_check and right_check:
                     spin = 'Mini T-spin' if self.type == 't' else 'mini'
 

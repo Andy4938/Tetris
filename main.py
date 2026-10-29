@@ -13,6 +13,7 @@ queue = SharedQueue()
 tetris_p1 = Game(WINDOW_W, WINDOW_H, WINDOW_W / 2.5, 1, mode, queue)
 renderer1 = Renderer(screen, WINDOW_W, WINDOW_H)
 input_handler1 = MovementHandler()
+movegen_test = True
 if mode == 'versus':
     tetris_p1 = Game(WINDOW_W, WINDOW_H, WINDOW_W / 5.95, 1, mode, queue)
     tetris_p2 = Game(WINDOW_W, WINDOW_H, WINDOW_W / 1.55, 2, mode, queue)
@@ -23,6 +24,8 @@ if mode == 'versus':
     input_handler1 = MovementHandler()
     input_handler2 = MovementHandler()
 
+i = 0
+start = pygame.time.get_ticks()
 while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -40,6 +43,13 @@ while running:
         if mode == 'versus':
             input_handler2.update(tetris_p2)
             renderer2.draw_game(tetris_p2)
+
+        if movegen_test and len(tetris_p1.mg.states) > 0:
+            state = tetris_p1.mg.final_states[i]
+            tetris_p1.current.x, tetris_p1.current.y, tetris_p1.current.rotation = state.x, state.y, state.rotation
+            if pygame.time.get_ticks() - start > 500:
+                i += 1
+                start = pygame.time.get_ticks()
         pygame.display.flip()
         clock.tick(240)
 
