@@ -57,7 +57,8 @@ class PieceState:
         #                                                                  other.spun)
 
     def __hash__(self):
-        return hash((self.type, self.x, self.y, self.rotation, self.spun))
+        return hash((self.type, self.x, self.y, self.rotation))
+        # return hash((self.type, self.x, self.y, self.rotation, self.spun))
 
     def __repr__(self):
         return f'({self.type}, {self.x}, {self.y}, {self.rotation}, {self.spun})'

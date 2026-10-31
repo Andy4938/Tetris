@@ -48,6 +48,10 @@ while running:
             state = tetris_p1.mg.final_states[i]
             tetris_p1.current.x, tetris_p1.current.y, tetris_p1.current.rotation = state.x, state.y, state.rotation
             if pygame.time.get_ticks() - start > 500:
+                if i >= len(tetris_p1.mg.final_states) - 1:
+                    i = 0
+                    tetris_p1.mg.final_states.clear()
+                    tetris_p1.mg.states.clear()
                 i += 1
                 start = pygame.time.get_ticks()
         pygame.display.flip()

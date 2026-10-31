@@ -71,13 +71,14 @@ class Game:
             if event.key == pygame.K_r and self.reset_animation_done:
                 self._reset()
             if not self.locked_out and not self.resetting:
+                if event.key == pygame.K_g:
+                    self.mg.generate(self.current.type)
                 if event.key == self.KEYBINDS['hold']:
                     self.key_presses += 1
                     if self.can_hold:
                         self._hold()
                         self.can_hold = False
                         self.last_input = 'hold'
-                        self.mg.generate(self.current.type)
                 if event.key == self.KEYBINDS['cw']:
                     self.current.rotation -= 1
                     self.force_spin, failed = self.current.collide(self.board.matrix, 'cw')
@@ -135,7 +136,7 @@ class Game:
                         self.last_attack = 0
                     self.handle_garbage()
                     self.locked_out = self.current.test_lockout(self, self.board.matrix)
-                    self.mg.generate(self.current.type)
+                    # self.mg.generate(self.current.type)
                     if self.locked_out:
                         self.final_time = pygame.time.get_ticks() - self.start_time
 
@@ -183,6 +184,10 @@ class Game:
         self.b2b = 0
         self.attack = 0
         self.last_attack = 0
+        self.mg = Movegen(self.board.matrix)
+        self.mg.states = []
+        self.mg.final_states = []
+        self.mg.previous = {}
 
     def drop(self):
         previous_y = None
