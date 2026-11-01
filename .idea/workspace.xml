@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states">
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movegen.py" beforeDir="false" afterPath="$PROJECT_DIR$/movegen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,61 +50,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.005190312279727" />
-      <entry key="MS500" value="1.4049360103638397" />
-      <entry key="S2" value="3.124538294095395" />
-      <entry key="S5" value="5.0851844255629155" />
-      <entry key="S10" value="6.291284015823893" />
-      <entry key="S30" value="7.361617923561508" />
-      <entry key="S60" value="7.671274263827661" />
-      <entry key="M2" value="7.869647851547982" />
-      <entry key="M5" value="10.465934988322992" />
-      <entry key="M10" value="21.73826817451092" />
-      <entry key="M15" value="37.038098684997145" />
-      <entry key="M30" value="89.62490353415153" />
-      <entry key="H1" value="185.71795915862893" />
-      <entry key="H2" value="341.2389763788627" />
-      <entry key="H4" value="630.4688097934367" />
-      <entry key="D1" value="3408.714816204997" />
-      <entry key="W1" value="6663.203545770417" />
+      <entry key="MS100" value="1.262429170930071" />
+      <entry key="MS500" value="1.7733870119808905" />
+      <entry key="S2" value="2.6038729750962553" />
+      <entry key="S5" value="4.101034430322326" />
+      <entry key="S10" value="5.444117957282428" />
+      <entry key="S30" value="8.05915382276352" />
+      <entry key="S60" value="11.17072423081588" />
+      <entry key="M2" value="16.18331203505977" />
+      <entry key="M5" value="23.88252967912854" />
+      <entry key="M10" value="30.38954417340734" />
+      <entry key="M15" value="35.19388292558648" />
+      <entry key="M30" value="51.43649442314297" />
+      <entry key="H1" value="107.83969294435397" />
+      <entry key="H2" value="248.9657633502453" />
+      <entry key="H4" value="537.5316453040296" />
+      <entry key="D1" value="3324.3482665407764" />
+      <entry key="W1" value="6725.192923184307" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.3281942182315824E-191" />
-      <entry key="S10" value="3.6444398996712565E-96" />
-      <entry key="S30" value="1.5388995201447247E-32" />
-      <entry key="S60" value="1.240523889388964E-16" />
-      <entry key="M2" value="1.1137880810050736E-8" />
-      <entry key="M5" value="6.58750604004734E-4" />
-      <entry key="M10" value="0.025666137301992534" />
-      <entry key="M15" value="0.08701090293642141" />
-      <entry key="M30" value="0.29497610601353486" />
-      <entry key="H1" value="0.543135022113498" />
-      <entry key="H2" value="0.7428534446314127" />
-      <entry key="H4" value="1.0446864411308787" />
-      <entry key="D1" value="12.03476511587894" />
-      <entry key="W1" value="31.837514500023648" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="1.5E-323" />
+      <entry key="S30" value="2.4496929237984772E-108" />
+      <entry key="S60" value="1.565149489281602E-54" />
+      <entry key="M2" value="1.2510593468263612E-27" />
+      <entry key="M5" value="1.7334493832384347E-11" />
+      <entry key="M10" value="4.163471368027437E-6" />
+      <entry key="M15" value="2.5880364475993955E-4" />
+      <entry key="M30" value="0.016087375339151045" />
+      <entry key="H1" value="0.12684021976289878" />
+      <entry key="H2" value="0.3589861807406583" />
+      <entry key="H4" value="0.7262284403589859" />
+      <entry key="D1" value="11.32710259830219" />
+      <entry key="W1" value="31.56307661019918" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.011088754111516403" />
-      <entry key="MS500" value="0.7275286535381168" />
-      <entry key="S2" value="2.7478790833870286" />
-      <entry key="S5" value="4.860202696699116" />
-      <entry key="S10" value="6.156792194701688" />
-      <entry key="S30" value="7.310331190760517" />
-      <entry key="S60" value="7.6446989714856395" />
-      <entry key="M2" value="7.856087776345014" />
-      <entry key="M5" value="10.460341196719426" />
-      <entry key="M10" value="21.75717452677356" />
-      <entry key="M15" value="37.11566773679868" />
-      <entry key="M30" value="89.90534967883086" />
-      <entry key="H1" value="186.24474506834835" />
-      <entry key="H2" value="341.96633193990334" />
-      <entry key="H4" value="631.4992751325586" />
-      <entry key="D1" value="3420.736633737993" />
-      <entry key="W1" value="6695.0373196757255" />
+      <entry key="MS100" value="1.2058222954717575" />
+      <entry key="MS500" value="1.7554478808871214" />
+      <entry key="S2" value="2.5208573682473987" />
+      <entry key="S5" value="3.9117816846174285" />
+      <entry key="S10" value="5.267858367219918" />
+      <entry key="S30" value="7.96480414354482" />
+      <entry key="S60" value="11.112153538013676" />
+      <entry key="M2" value="16.147223401719316" />
+      <entry key="M5" value="23.864601925690522" />
+      <entry key="M10" value="30.379222173945667" />
+      <entry key="M15" value="35.18657988189599" />
+      <entry key="M30" value="51.44739897249764" />
+      <entry key="H1" value="107.96022668730674" />
+      <entry key="H2" value="249.31590413287887" />
+      <entry key="H4" value="538.2472737542506" />
+      <entry key="D1" value="3335.663057954062" />
+      <entry key="W1" value="6756.752273434883" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -410,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793241233535</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
+      <option name="closed" value="true" />
+      <created>1793488561950</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1793488561950</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +445,8 @@
     <MESSAGE value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
     <MESSAGE value="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage" />
     <MESSAGE value="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states" />
-    <option name="LAST_COMMIT_MESSAGE" value="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states" />
+    <MESSAGE value="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
+    <option name="LAST_COMMIT_MESSAGE" value="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
