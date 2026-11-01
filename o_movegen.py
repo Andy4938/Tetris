@@ -34,23 +34,28 @@ def movegen_o_piece(piece: Piece, board: Board):
         return []
 
     start = (start_x, start_y)
-    queue = deque([start])
+    rotation = piece.rotation % 4
+    queue = deque([(start, [])])
     visited = {start}
-    landings = set()
+    landings = []
 
     while queue:
-        x, y = queue.popleft()
+        (x, y), path = queue.popleft()
 
         drop_y = y
         while fits(matrix, x, drop_y + 1):
             drop_y += 1
-        landings.add((x, drop_y))
+        if drop_y == y:
+            landings.append({"state": (x, y, rotation), "path": path})
 
-        next_positions = ((x - 1, y), (x + 1, y), (x, drop_y))
-        for next_x, next_y in next_positions:
-            position = (next_x, next_y)
-            if position not in visited and fits(matrix, next_x, next_y):
+        candidates = (
+            ("left", (x - 1, y)),
+            ("right", (x + 1, y)),
+            ("sd", (x, drop_y)),
+        )
+        for action, position in candidates:
+            if position not in visited and fits(matrix, *position):
                 visited.add(position)
-                queue.append(position)
+                queue.append((position, path + [action]))
 
-    return sorted(landings)
+    return sorted(landings, key=lambda move: move["state"])
