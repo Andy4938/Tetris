@@ -91,9 +91,9 @@ class PieceState:
                         corner_filled = y > 39 or x < 0 or x > 9 or matrix[y][x]
                         if corner_filled:
                             t_corners += 1
-                            t_corners_faced += 1 if (self.rotation == 0 and index in (0,2) or self.rotation == 1 and
-                                                     index in (0, 6) or self.rotation == 2 and index in (6,8) or
-                                                     self.rotation == 3 and index in (2, 8)) else 0
+                            t_corners_faced += 1 if (new_r == 0 and index in (0,2) or new_r == 1 and
+                                                     index in (0, 6) or new_r == 2 and index in (6,8) or
+                                                     new_r == 3 and index in (2, 8)) else 0
                     if mino:
                         if x < 0 or x > 9 or y > 39 or matrix[y][x]:
                             valid_rotation = False

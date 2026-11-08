@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movegen.py" beforeDir="false" afterPath="$PROJECT_DIR$/movegen.py" afterDir="false" />
-    </list>
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
