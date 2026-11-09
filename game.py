@@ -72,6 +72,7 @@ class Game:
                     failed = self.current.collide(self.board.matrix, '180')
                     self.key_presses += 1
                     if not failed:
+                        self.force_spin = False
                         self.last_input = '180'
                 if event.key == self.KEYBINDS['sd']:
                     self.soft_dropping = True

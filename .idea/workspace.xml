@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection">
-      <change beforePath="$PROJECT_DIR$/.idea/Tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tetris.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keybinds.json" beforeDir="false" afterPath="$PROJECT_DIR$/keybinds.json" afterDir="false" />
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="movegen added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movegen.py" beforeDir="false" afterPath="$PROJECT_DIR$/movegen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,23 +41,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000036397863185" />
-      <entry key="S2" value="1.1409008401573977" />
-      <entry key="S5" value="2.1752035372791454" />
-      <entry key="S10" value="3.5993668110153996" />
-      <entry key="S30" value="5.523549696043042" />
-      <entry key="S60" value="6.356738710519738" />
-      <entry key="M2" value="7.854532534171727" />
-      <entry key="M5" value="12.000740100379057" />
-      <entry key="M10" value="15.539051147381608" />
-      <entry key="M15" value="17.853597687390245" />
-      <entry key="M30" value="28.75506607962666" />
-      <entry key="H1" value="70.0712829459554" />
-      <entry key="H2" value="187.11859628932433" />
-      <entry key="H4" value="495.1985193976281" />
-      <entry key="D1" value="3275.8240684901134" />
-      <entry key="W1" value="6104.57750439681" />
+      <entry key="MS100" value="1.087844520751793" />
+      <entry key="MS500" value="2.0727056978781095" />
+      <entry key="S2" value="3.1898503005039767" />
+      <entry key="S5" value="3.629702668656387" />
+      <entry key="S10" value="3.909043351504075" />
+      <entry key="S30" value="6.670395554006679" />
+      <entry key="S60" value="10.402150831000878" />
+      <entry key="M2" value="14.859766238127605" />
+      <entry key="M5" value="22.191502978519004" />
+      <entry key="M10" value="28.16546362142835" />
+      <entry key="M15" value="31.665382774361966" />
+      <entry key="M30" value="43.45630684682298" />
+      <entry key="H1" value="84.22669545227748" />
+      <entry key="H2" value="200.07838372992597" />
+      <entry key="H4" value="506.5638155429994" />
+      <entry key="D1" value="3286.5132209118033" />
+      <entry key="W1" value="6120.630350035597" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -66,36 +66,36 @@
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
       <entry key="S30" value="0.0" />
-      <entry key="S60" value="1.091995268547057E-175" />
-      <entry key="M2" value="3.3045351693499085E-88" />
-      <entry key="M5" value="1.0177571247789623E-35" />
-      <entry key="M10" value="3.190230594767442E-18" />
-      <entry key="M15" value="2.1671121367366885E-12" />
-      <entry key="M30" value="1.4722388732731223E-6" />
-      <entry key="H1" value="0.0012414269965382884" />
-      <entry key="H2" value="0.04891147032968411" />
-      <entry key="H4" value="0.536687695235997" />
-      <entry key="D1" value="13.193690305355148" />
-      <entry key="W1" value="31.628279854796137" />
+      <entry key="S60" value="4.39015779417198E-177" />
+      <entry key="M2" value="6.625826585545323E-89" />
+      <entry key="M5" value="5.351752567020981E-36" />
+      <entry key="M10" value="2.3133855206215187E-18" />
+      <entry key="M15" value="1.7491699561962049E-12" />
+      <entry key="M30" value="1.3226763650556653E-6" />
+      <entry key="H1" value="0.0011766812731117723" />
+      <entry key="H2" value="0.047618920561338714" />
+      <entry key="H4" value="0.5295488781084812" />
+      <entry key="D1" value="13.164277282517913" />
+      <entry key="W1" value="31.61819740152158" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9659363289248455" />
-      <entry key="MS500" value="0.9931283324865342" />
-      <entry key="S2" value="1.1356225278469778" />
-      <entry key="S5" value="2.1484156722118994" />
-      <entry key="S10" value="3.5638642936240448" />
-      <entry key="S30" value="5.50066252251301" />
-      <entry key="S60" value="6.342946660411178" />
-      <entry key="M2" value="7.845831882385953" />
-      <entry key="M5" value="11.995450825104058" />
-      <entry key="M10" value="15.535627828872094" />
-      <entry key="M15" value="17.850906428721974" />
-      <entry key="M30" value="28.752446623385705" />
-      <entry key="H1" value="70.06809710492864" />
-      <entry key="H2" value="187.16039444749737" />
-      <entry key="H4" value="495.7252841428358" />
-      <entry key="D1" value="3289.005464191791" />
-      <entry key="W1" value="6136.202364181728" />
+      <entry key="MS100" value="1.0407905230154186" />
+      <entry key="MS500" value="1.7574653228160557" />
+      <entry key="S2" value="2.951204990366885" />
+      <entry key="S5" value="3.509032727360375" />
+      <entry key="S10" value="3.8436918860563076" />
+      <entry key="S30" value="6.646932897014459" />
+      <entry key="S60" value="10.389428368157832" />
+      <entry key="M2" value="14.851762380386619" />
+      <entry key="M5" value="22.18616331684303" />
+      <entry key="M10" value="28.16169159937883" />
+      <entry key="M15" value="31.662348371725248" />
+      <entry key="M30" value="43.4535211681274" />
+      <entry key="H1" value="84.22345928558094" />
+      <entry key="H2" value="200.11896899669026" />
+      <entry key="H4" value="507.0835192822537" />
+      <entry key="D1" value="3299.665221966493" />
+      <entry key="W1" value="6152.245127167022" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -386,7 +386,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789524102035</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="movegen added">
+      <option name="closed" value="true" />
+      <created>1794264966424</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1794264966424</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +421,8 @@
     <MESSAGE value="Attack calculation and combos fully impolemented but no garbage sending yet" />
     <MESSAGE value="Garbage sending now works! Right now sending is disabled for player 2" />
     <MESSAGE value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
+    <MESSAGE value="movegen added" />
+    <option name="LAST_COMMIT_MESSAGE" value="movegen added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

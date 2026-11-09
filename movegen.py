@@ -76,7 +76,7 @@ class PieceState:
                 kicks = table[new_r]
             my_map = Piece.MINO_MAPS[self.type][new_r]
             dimension = int(sqrt(len(my_map)))
-            for dx, dy in [(0, 0)] + list(kicks):
+            for k, (dx, dy) in enumerate([(0, 0)] + list(kicks)):
                 spin = 'None'
                 valid_rotation = True
                 t_corners = 0
@@ -111,6 +111,8 @@ class PieceState:
                 if valid_rotation:
                     if self.type == 't':
                         spin = spin if t_corners < 3 else 't-spin' if t_corners_faced == 2 else 'mini'
+                        if spin == 'mini' and k == 4 and input != '180':
+                            spin = 't-spin'
                     else:
                         spin = f'mini' if spin != 'None' else 'None'
                     return PieceState(self.type, self.x + dx, self.y - dy, new_r, spin)
