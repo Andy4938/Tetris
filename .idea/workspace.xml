@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tetris.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keybinds.json" beforeDir="false" afterPath="$PROJECT_DIR$/keybinds.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,23 +41,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000001594933934" />
-      <entry key="MS500" value="1.0440662663703282" />
-      <entry key="S2" value="1.833692998133872" />
-      <entry key="S5" value="3.280033713286298" />
-      <entry key="S10" value="4.3426035025357095" />
-      <entry key="S30" value="5.367518732647876" />
-      <entry key="S60" value="5.835090073926398" />
-      <entry key="M2" value="7.1540404737430565" />
-      <entry key="M5" value="11.190547232132438" />
-      <entry key="M10" value="14.663943361250796" />
-      <entry key="M15" value="16.949976330892586" />
-      <entry key="M30" value="27.83431272685508" />
-      <entry key="H1" value="69.16981930005112" />
-      <entry key="H2" value="186.2513063757166" />
-      <entry key="H4" value="494.3746797665155" />
-      <entry key="D1" value="3275.018595092126" />
-      <entry key="W1" value="6103.629296839594" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000036397863185" />
+      <entry key="S2" value="1.1409008401573977" />
+      <entry key="S5" value="2.1752035372791454" />
+      <entry key="S10" value="3.5993668110153996" />
+      <entry key="S30" value="5.523549696043042" />
+      <entry key="S60" value="6.356738710519738" />
+      <entry key="M2" value="7.854532534171727" />
+      <entry key="M5" value="12.000740100379057" />
+      <entry key="M10" value="15.539051147381608" />
+      <entry key="M15" value="17.853597687390245" />
+      <entry key="M30" value="28.75506607962666" />
+      <entry key="H1" value="70.0712829459554" />
+      <entry key="H2" value="187.11859628932433" />
+      <entry key="H4" value="495.1985193976281" />
+      <entry key="D1" value="3275.8240684901134" />
+      <entry key="W1" value="6104.57750439681" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -65,36 +66,36 @@
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
       <entry key="S30" value="0.0" />
-      <entry key="S60" value="1.1895093445122114E-175" />
-      <entry key="M2" value="3.4489264192096014E-88" />
-      <entry key="M5" value="1.0353175397067913E-35" />
-      <entry key="M10" value="3.2176350627547135E-18" />
-      <entry key="M15" value="2.179504940453156E-12" />
-      <entry key="M30" value="1.4764424299964797E-6" />
-      <entry key="H1" value="0.0012431980030245962" />
-      <entry key="H2" value="0.04894634618616723" />
-      <entry key="H4" value="0.5368790011559041" />
-      <entry key="D1" value="13.19447401882782" />
-      <entry key="W1" value="31.628548239341686" />
+      <entry key="S60" value="1.091995268547057E-175" />
+      <entry key="M2" value="3.3045351693499085E-88" />
+      <entry key="M5" value="1.0177571247789623E-35" />
+      <entry key="M10" value="3.190230594767442E-18" />
+      <entry key="M15" value="2.1671121367366885E-12" />
+      <entry key="M30" value="1.4722388732731223E-6" />
+      <entry key="H1" value="0.0012414269965382884" />
+      <entry key="H2" value="0.04891147032968411" />
+      <entry key="H4" value="0.536687695235997" />
+      <entry key="D1" value="13.193690305355148" />
+      <entry key="W1" value="31.628279854796137" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9265882066336805" />
-      <entry key="MS500" value="1.0279794249755803" />
-      <entry key="S2" value="1.7875328188549082" />
-      <entry key="S5" value="3.2072017829347197" />
-      <entry key="S10" value="4.283870512328048" />
-      <entry key="S30" value="5.340498516974503" />
-      <entry key="S60" value="5.820129326215315" />
-      <entry key="M2" value="7.14498979072321" />
-      <entry key="M5" value="11.185178447239295" />
-      <entry key="M10" value="14.660496461847986" />
-      <entry key="M15" value="16.947273554878247" />
-      <entry key="M30" value="27.831687722410994" />
-      <entry key="H1" value="69.16662987821493" />
-      <entry key="H2" value="186.2931348193622" />
-      <entry key="H4" value="494.90163252130304" />
-      <entry key="D1" value="3288.200773817084" />
-      <entry key="W1" value="6135.2544249857665" />
+      <entry key="MS100" value="0.9659363289248455" />
+      <entry key="MS500" value="0.9931283324865342" />
+      <entry key="S2" value="1.1356225278469778" />
+      <entry key="S5" value="2.1484156722118994" />
+      <entry key="S10" value="3.5638642936240448" />
+      <entry key="S30" value="5.50066252251301" />
+      <entry key="S60" value="6.342946660411178" />
+      <entry key="M2" value="7.845831882385953" />
+      <entry key="M5" value="11.995450825104058" />
+      <entry key="M10" value="15.535627828872094" />
+      <entry key="M15" value="17.850906428721974" />
+      <entry key="M30" value="28.752446623385705" />
+      <entry key="H1" value="70.06809710492864" />
+      <entry key="H2" value="187.16039444749737" />
+      <entry key="H4" value="495.7252841428358" />
+      <entry key="D1" value="3289.005464191791" />
+      <entry key="W1" value="6136.202364181728" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -108,37 +109,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.CreateWorkingTree.LastParentPath&quot;: &quot;/Users/andywu/PycharmProjects&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.font_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.render.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;UI&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andywu/PycharmProjects/Tetris&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.CreateWorkingTree.LastParentPath": "/Users/andywu/PycharmProjects",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.font_test.executor": "Run",
+    "Python.game.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.render.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/andywu/PycharmProjects/Tetris",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
