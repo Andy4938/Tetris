@@ -5,6 +5,25 @@ from collections import deque
 
 def movegen_s_piece(piece: Piece, board: Board):
 
+    def try_rotation(x, y, rotation, action):
+        if action == "cw":
+            next_rotation = (rotation - 1) % 4
+            kicks = Piece.CW_KICKS["other"][next_rotation]
+        elif action == "ccw":
+            next_rotation = (rotation + 1) % 4
+            kicks = Piece.CCW_KICKS["other"][next_rotation]
+        else:  # 180
+            next_rotation = (rotation + 2) % 4
+            kicks = Piece.KICKS_180[next_rotation]
+
+        # The zero-offset attempt comes first.
+        for dx, dy in [(0, 0), *kicks]:
+            kicked_state = (x + dx, y - dy, next_rotation)
+            if is_valid_state(*kicked_state):
+                return kicked_state
+
+        return None
+
     S_CELLS = [[
         (index % 3, index//3)
         for index, filled, in enumerate(shape)
@@ -59,9 +78,6 @@ def movegen_s_piece(piece: Piece, board: Board):
                 ("right", (x + 1, y, rotation)),
                 ("left", (x - 1, y, rotation)),
                 ("down", (x, y + 1, rotation)),
-                ("ccw",   (x, y, (rotation + 1) % 4)),
-                ("180",   (x, y, (rotation + 2) % 4)),
-                ("cw",    (x, y, (rotation + 3) % 4)),
             ]
 
             for action, next_state in candidates:
@@ -74,18 +90,17 @@ def movegen_s_piece(piece: Piece, board: Board):
                 visited.add(next_state)
                 q.append((next_state, path + [action]))
 
+            for action in ("ccw", "180", "cw"):
+                next_state = try_rotation(x, y, rotation, action)
+                if next_state is None or next_state in visited:
+                    continue
+
+                visited.add(next_state)
+                q.append((next_state, path + [action]))
+
     findMoves(piece.x, piece.y, piece.rotation)
 
     return possible_moves
-
-    
-
-
-
-
-
-
-    
 
 if __name__ == "__main__":
     from types import SimpleNamespace
@@ -106,4 +121,3 @@ if __name__ == "__main__":
         print()
 
     assert len(moves) == 34, f"Expected 34, got {len(moves)}"
-
