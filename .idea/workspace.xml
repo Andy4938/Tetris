@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="movegen added">
+    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movegen.py" beforeDir="false" afterPath="$PROJECT_DIR$/movegen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="15" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -21,7 +26,13 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -41,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.087844520751793" />
-      <entry key="MS500" value="2.0727056978781095" />
-      <entry key="S2" value="3.1898503005039767" />
-      <entry key="S5" value="3.629702668656387" />
-      <entry key="S10" value="3.909043351504075" />
-      <entry key="S30" value="6.670395554006679" />
-      <entry key="S60" value="10.402150831000878" />
-      <entry key="M2" value="14.859766238127605" />
-      <entry key="M5" value="22.191502978519004" />
-      <entry key="M10" value="28.16546362142835" />
-      <entry key="M15" value="31.665382774361966" />
-      <entry key="M30" value="43.45630684682298" />
-      <entry key="H1" value="84.22669545227748" />
-      <entry key="H2" value="200.07838372992597" />
-      <entry key="H4" value="506.5638155429994" />
-      <entry key="D1" value="3286.5132209118033" />
-      <entry key="W1" value="6120.630350035597" />
+      <entry key="MS100" value="1.00000001270525" />
+      <entry key="MS500" value="1.0263509721953166" />
+      <entry key="S2" value="1.4032386393864156" />
+      <entry key="S5" value="1.77391727616199" />
+      <entry key="S10" value="2.319690699731894" />
+      <entry key="S30" value="3.5764042767677506" />
+      <entry key="S60" value="4.189742896925283" />
+      <entry key="M2" value="4.877692415272171" />
+      <entry key="M5" value="10.237796925474182" />
+      <entry key="M10" value="23.736122158217306" />
+      <entry key="M15" value="37.218658309696615" />
+      <entry key="M30" value="73.86972165647202" />
+      <entry key="H1" value="139.21452392299892" />
+      <entry key="H2" value="274.5955017077879" />
+      <entry key="H4" value="556.7937213898397" />
+      <entry key="D1" value="3341.386504938379" />
+      <entry key="W1" value="6861.29123312439" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="4.39015779417198E-177" />
-      <entry key="M2" value="6.625826585545323E-89" />
-      <entry key="M5" value="5.351752567020981E-36" />
-      <entry key="M10" value="2.3133855206215187E-18" />
-      <entry key="M15" value="1.7491699561962049E-12" />
-      <entry key="M30" value="1.3226763650556653E-6" />
-      <entry key="H1" value="0.0011766812731117723" />
-      <entry key="H2" value="0.047618920561338714" />
-      <entry key="H4" value="0.5295488781084812" />
-      <entry key="D1" value="13.164277282517913" />
-      <entry key="W1" value="31.61819740152158" />
+      <entry key="S2" value="6.309249903253514E-216" />
+      <entry key="S5" value="8.317467104071758E-87" />
+      <entry key="S10" value="9.12001485967636E-44" />
+      <entry key="S30" value="4.50123667404899E-15" />
+      <entry key="S60" value="6.709125631592381E-8" />
+      <entry key="M2" value="2.5901979908092706E-4" />
+      <entry key="M5" value="0.036756418263609064" />
+      <entry key="M10" value="0.19171963746915652" />
+      <entry key="M15" value="0.3324913945742115" />
+      <entry key="M30" value="0.578051620384309" />
+      <entry key="H1" value="0.7972069644606673" />
+      <entry key="H2" value="1.0675184350061178" />
+      <entry key="H4" value="1.4702569207407263" />
+      <entry key="D1" value="11.759127509146715" />
+      <entry key="W1" value="32.33507116456065" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0407905230154186" />
-      <entry key="MS500" value="1.7574653228160557" />
-      <entry key="S2" value="2.951204990366885" />
-      <entry key="S5" value="3.509032727360375" />
-      <entry key="S10" value="3.8436918860563076" />
-      <entry key="S30" value="6.646932897014459" />
-      <entry key="S60" value="10.389428368157832" />
-      <entry key="M2" value="14.851762380386619" />
-      <entry key="M5" value="22.18616331684303" />
-      <entry key="M10" value="28.16169159937883" />
-      <entry key="M15" value="31.662348371725248" />
-      <entry key="M30" value="43.4535211681274" />
-      <entry key="H1" value="84.22345928558094" />
-      <entry key="H2" value="200.11896899669026" />
-      <entry key="H4" value="507.0835192822537" />
-      <entry key="D1" value="3299.665221966493" />
-      <entry key="W1" value="6152.245127167022" />
+      <entry key="MS100" value="0.08420209927474676" />
+      <entry key="MS500" value="0.624471303020572" />
+      <entry key="S2" value="1.232970139676706" />
+      <entry key="S5" value="1.68331620972048" />
+      <entry key="S10" value="2.2606111580087527" />
+      <entry key="S30" value="3.5467355368092615" />
+      <entry key="S60" value="4.172488891772837" />
+      <entry key="M2" value="4.867568092247594" />
+      <entry key="M5" value="10.263355797985923" />
+      <entry key="M10" value="23.913269979653098" />
+      <entry key="M15" value="37.53570899188062" />
+      <entry key="M30" value="74.43262968497527" />
+      <entry key="H1" value="139.99819818117675" />
+      <entry key="H2" value="275.6504787427852" />
+      <entry key="H4" value="558.2516492445901" />
+      <entry key="D1" value="3353.1330688919834" />
+      <entry key="W1" value="6893.6224792384955" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -109,35 +120,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.CreateWorkingTree.LastParentPath": "/Users/andywu/PycharmProjects",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.font_test.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.render.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/andywu/PycharmProjects/Tetris",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "settings.editor.selected.configurable": "preferences.sourceCode",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.CreateWorkingTree.LastParentPath&quot;: &quot;/Users/andywu/PycharmProjects&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.font_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.render.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;move-gen-t-piece&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andywu/PycharmProjects/Tetris&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
 }]]></component>
   <component name="RecentsManager">
@@ -386,15 +395,31 @@
       <option name="project" value="LOCAL" />
       <updated>1789524102035</updated>
     </task>
-    <task id="LOCAL-00022" summary="movegen added">
+    <task id="LOCAL-00022" summary="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage">
       <option name="closed" value="true" />
-      <created>1794264966424</created>
+      <created>1791236746790</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1794264966424</updated>
+      <updated>1791236746790</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states">
+      <option name="closed" value="true" />
+      <created>1793241233535</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1793241233535</updated>
+    </task>
+    <task id="LOCAL-00024" summary="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
+      <option name="closed" value="true" />
+      <created>1793488561950</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1793488561950</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,8 +446,10 @@
     <MESSAGE value="Attack calculation and combos fully impolemented but no garbage sending yet" />
     <MESSAGE value="Garbage sending now works! Right now sending is disabled for player 2" />
     <MESSAGE value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
-    <MESSAGE value="movegen added" />
-    <option name="LAST_COMMIT_MESSAGE" value="movegen added" />
+    <MESSAGE value="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage" />
+    <MESSAGE value="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states" />
+    <MESSAGE value="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
+    <option name="LAST_COMMIT_MESSAGE" value="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

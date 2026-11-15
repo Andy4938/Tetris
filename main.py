@@ -38,6 +38,8 @@ def start_game(mode):
         input_handlers.append(MovementHandler(handling['das'], handling['arr']))
     return games, renderers, input_handlers
 
+i = 0
+start = pygame.time.get_ticks()
 while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
