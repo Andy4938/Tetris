@@ -14,9 +14,9 @@ class Movegen:
         state = PieceState(piece_type, x=4 if piece_type == 'o' else 3)
         self.search(state)
         # print(self.final_states)
-        for state in self.final_states:
-            if state.spin in ('mini', 't-spin'):
-                print(f'{state}, {'mini' or 't-spin' in state}')
+        # for state in self.final_states:
+        #     if state.spin in ('mini', 't-spin'):
+        #         print(f'{state}, {'mini' or 't-spin' in state}')
         # print(len(self.final_states), len(set(self.final_states)))
 
     def path(self, state):

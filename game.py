@@ -150,9 +150,6 @@ class Game:
                 if event.key == self.KEYBINDS['180']:
                     self.rotate('180')
                     self.key_presses += 1
-                    if not failed:
-                        self.force_spin = False
-                        self.last_input = '180'
                 if event.key == self.KEYBINDS['sd']:
                     self.soft_dropping = True
                     self.key_presses += 1

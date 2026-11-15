@@ -1,161 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="ALL" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
+    <list default="true" id="6f61b21d-9f89-4a76-a3dd-1ef838dcf83e" name="Changes" comment="added dedupe to movegen and o piece no longer checks rotations. Can place random pieces.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movegen.py" beforeDir="false" afterPath="$PROJECT_DIR$/movegen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="15" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Andy4938&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Andy4938/Tetris.git&quot;,
-    &quot;accountId&quot;: &quot;38fa06f1-0158-47db-8c4a-37ee26e1782b&quot;
-  }
-}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
-  <component name="NextEditCompletionFeaturesState">
-    <decayedCancelled>
-      <entry key="MS100" value="1.00000001270525" />
-      <entry key="MS500" value="1.0263509721953166" />
-      <entry key="S2" value="1.4032386393864156" />
-      <entry key="S5" value="1.77391727616199" />
-      <entry key="S10" value="2.319690699731894" />
-      <entry key="S30" value="3.5764042767677506" />
-      <entry key="S60" value="4.189742896925283" />
-      <entry key="M2" value="4.877692415272171" />
-      <entry key="M5" value="10.237796925474182" />
-      <entry key="M10" value="23.736122158217306" />
-      <entry key="M15" value="37.218658309696615" />
-      <entry key="M30" value="73.86972165647202" />
-      <entry key="H1" value="139.21452392299892" />
-      <entry key="H2" value="274.5955017077879" />
-      <entry key="H4" value="556.7937213898397" />
-      <entry key="D1" value="3341.386504938379" />
-      <entry key="W1" value="6861.29123312439" />
-    </decayedCancelled>
-    <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="6.309249903253514E-216" />
-      <entry key="S5" value="8.317467104071758E-87" />
-      <entry key="S10" value="9.12001485967636E-44" />
-      <entry key="S30" value="4.50123667404899E-15" />
-      <entry key="S60" value="6.709125631592381E-8" />
-      <entry key="M2" value="2.5901979908092706E-4" />
-      <entry key="M5" value="0.036756418263609064" />
-      <entry key="M10" value="0.19171963746915652" />
-      <entry key="M15" value="0.3324913945742115" />
-      <entry key="M30" value="0.578051620384309" />
-      <entry key="H1" value="0.7972069644606673" />
-      <entry key="H2" value="1.0675184350061178" />
-      <entry key="H4" value="1.4702569207407263" />
-      <entry key="D1" value="11.759127509146715" />
-      <entry key="W1" value="32.33507116456065" />
-    </decayedSelected>
-    <decayedShown>
-      <entry key="MS100" value="0.08420209927474676" />
-      <entry key="MS500" value="0.624471303020572" />
-      <entry key="S2" value="1.232970139676706" />
-      <entry key="S5" value="1.68331620972048" />
-      <entry key="S10" value="2.2606111580087527" />
-      <entry key="S30" value="3.5467355368092615" />
-      <entry key="S60" value="4.172488891772837" />
-      <entry key="M2" value="4.867568092247594" />
-      <entry key="M5" value="10.263355797985923" />
-      <entry key="M10" value="23.913269979653098" />
-      <entry key="M15" value="37.53570899188062" />
-      <entry key="M30" value="74.43262968497527" />
-      <entry key="H1" value="139.99819818117675" />
-      <entry key="H2" value="275.6504787427852" />
-      <entry key="H4" value="558.2516492445901" />
-      <entry key="D1" value="3353.1330688919834" />
-      <entry key="W1" value="6893.6224792384955" />
-    </decayedShown>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
-  <component name="ProjectId" id="3ITIib88kudptlPXXEaBoUZI0qg" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.CreateWorkingTree.LastParentPath&quot;: &quot;/Users/andywu/PycharmProjects&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.font_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.render.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;move-gen-t-piece&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andywu/PycharmProjects/Tetris&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.game.executor": "Run",
+    "Python.main.executor": "Run",
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Tetris" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,7 +43,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
@@ -180,281 +53,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.main" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-python-sdk-eff1e8def5f5-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.10315.174" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="149c7dbf-1991-4aaf-9cf1-93809e45213e" name="Changes" comment="" />
-      <created>1787782259490</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1787782259490</updated>
-      <workItem from="1787782260499" duration="10724000" />
-      <workItem from="1787811686075" duration="29000" />
-      <workItem from="1787863721203" duration="2962000" />
-      <workItem from="1787866722343" duration="3778000" />
-      <workItem from="1787893280355" duration="5407000" />
-      <workItem from="1787985584455" duration="3714000" />
-      <workItem from="1788235039557" duration="6082000" />
-      <workItem from="1788411414535" duration="3329000" />
-      <workItem from="1788479258557" duration="2237000" />
-      <workItem from="1788562737396" duration="1303000" />
-      <workItem from="1788637329371" duration="15468000" />
-      <workItem from="1788668433998" duration="9703000" />
-      <workItem from="1788729568101" duration="17129000" />
-      <workItem from="1788839829935" duration="8792000" />
-      <workItem from="1788900034321" duration="13129000" />
-      <workItem from="1789014199245" duration="8143000" />
-      <workItem from="1789057233215" duration="10233000" />
-      <workItem from="1789153941630" duration="1914000" />
-      <workItem from="1789363569468" duration="1363000" />
-      <workItem from="1789435088798" duration="4124000" />
-      <workItem from="1789450205011" duration="7760000" />
-      <workItem from="1789507317396" duration="7973000" />
-      <workItem from="1790027095101" duration="2349000" />
-      <workItem from="1790092781301" duration="1137000" />
-      <workItem from="1790630941046" duration="6000" />
-      <workItem from="1792365225549" duration="16000" />
-    </task>
-    <task id="LOCAL-00001" summary="initial commit">
-      <option name="closed" value="true" />
-      <created>1787986091132</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1787986091132</updated>
-    </task>
-    <task id="LOCAL-00002" summary="first commit">
-      <option name="closed" value="true" />
-      <created>1787986415631</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1787986415631</updated>
-    </task>
-    <task id="LOCAL-00003" summary="first commit">
-      <option name="closed" value="true" />
-      <created>1787987828680</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1787987828680</updated>
-    </task>
-    <task id="LOCAL-00004" summary="restructured with oop">
-      <option name="closed" value="true" />
-      <created>1788645972779</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1788645972779</updated>
-    </task>
-    <task id="LOCAL-00005" summary="piece movement, walls, and softdrop/harddrop added">
-      <option name="closed" value="true" />
-      <created>1788678391104</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1788678391105</updated>
-    </task>
-    <task id="LOCAL-00006" summary="piece movement with DAS, ARR, and instant softdrop added.">
-      <option name="closed" value="true" />
-      <created>1788736956803</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1788736956803</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Lockout added">
-      <option name="closed" value="true" />
-      <created>1788738700898</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1788738700898</updated>
-    </task>
-    <task id="LOCAL-00008" summary="SRS+ fully implemented">
-      <option name="closed" value="true" />
-      <created>1788757351673</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1788757351673</updated>
-    </task>
-    <task id="LOCAL-00009" summary="softdrop now works before ARR if ARR is instant">
-      <option name="closed" value="true" />
-      <created>1788757945401</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1788757945401</updated>
-    </task>
-    <task id="LOCAL-00010" summary="ghost piece added">
-      <option name="closed" value="true" />
-      <created>1788760508472</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1788760508473</updated>
-    </task>
-    <task id="LOCAL-00011" summary="40 Line sprint with stats implemented">
-      <option name="closed" value="true" />
-      <created>1788847870421</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1788847870421</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fixed bug with reset">
-      <option name="closed" value="true" />
-      <created>1788848423748</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1788848423748</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Ready set go text added, but timer and game don't reflect it yet">
-      <option name="closed" value="true" />
-      <created>1788904307752</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1788904307752</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Ready set go fixed and added pre-charging das">
-      <option name="closed" value="true" />
-      <created>1788918022044</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1788918022044</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Two boards side by side each with customizable keybinds, right now controlled by same keys and both are 40 line sprint">
-      <option name="closed" value="true" />
-      <created>1788927093925</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1788927093925</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Remaining lines display can't go below 0">
-      <option name="closed" value="true" />
-      <created>1788927738382</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1788927738382</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Added t-spin detection and all-spin detection, but not working properly yet (doesn't check that last input is a spin)">
-      <option name="closed" value="true" />
-      <created>1789021789287</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1789021789287</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Spin detection is now fully working">
-      <option name="closed" value="true" />
-      <created>1789074086146</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1789074086146</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Attack calculation and combos fully impolemented but no garbage sending yet">
-      <option name="closed" value="true" />
-      <created>1789454261268</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1789454261268</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Garbage sending now works! Right now sending is disabled for player 2">
-      <option name="closed" value="true" />
-      <created>1789457740799</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1789457740799</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection">
-      <option name="closed" value="true" />
-      <created>1789524102035</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1789524102035</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage">
-      <option name="closed" value="true" />
-      <created>1791236746790</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1791236746790</updated>
-    </task>
-    <task id="LOCAL-00023" summary="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states">
-      <option name="closed" value="true" />
-      <created>1793241233535</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1793241233535</updated>
-    </task>
-    <task id="LOCAL-00024" summary="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin">
-      <option name="closed" value="true" />
-      <created>1793488561950</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1793488561950</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="first commit" />
-    <MESSAGE value="restructured with oop" />
-    <MESSAGE value="piece movement, walls, and softdrop/harddrop added" />
-    <MESSAGE value="piece movement with DAS, ARR, and instant softdrop added." />
-    <MESSAGE value="Lockout added" />
-    <MESSAGE value="SRS+ fully implemented" />
-    <MESSAGE value="softdrop now works before ARR if ARR is instant" />
-    <MESSAGE value="ghost piece added" />
-    <MESSAGE value="40 Line sprint with stats implemented" />
-    <MESSAGE value="fixed bug with reset" />
-    <MESSAGE value="Ready set go text added, but timer and game don't reflect it yet" />
-    <MESSAGE value="Ready set go fixed and added pre-charging das" />
-    <MESSAGE value="Two boards side by side each with customizable keybinds, right now controlled by same keys and both are 40 line sprint" />
-    <MESSAGE value="Remaining lines display can't go below 0" />
-    <MESSAGE value="Added t-spin detection and all-spin detection, but not working properly yet (doesn't check that last input is a spin)" />
-    <MESSAGE value="Spin detection is now fully working" />
-    <MESSAGE value="Attack calculation and combos fully impolemented but no garbage sending yet" />
-    <MESSAGE value="Garbage sending now works! Right now sending is disabled for player 2" />
-    <MESSAGE value="Garbage bar now shows incoming garbage, garbage now appears on the first piece that isn't a line clear, and small bug fixed with spin detection" />
-    <MESSAGE value="Bugfixes: vertical i-spins work now, tetrises have b2b bonus, fins now send how much they're supposed to, top out check now happens after garbage" />
-    <MESSAGE value="movegen implemented with an option to show all final states. No spin detection yet, so double counts most states" />
-    <MESSAGE value="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
-    <option name="LAST_COMMIT_MESSAGE" value="press g to movegen for a piece and display final states, also doesn't double count last input spin/not spin anymore but might miss spins for cases where the piece can also each that state without a spin" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tetris$font_test.coverage" NAME="font_test Coverage Results" MODIFIED="1788900991271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$render.coverage" NAME="render Coverage Results" MODIFIED="1787896458197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$main.coverage" NAME="main Coverage Results" MODIFIED="1790030140318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tetris$game.coverage" NAME="game Coverage Results" MODIFIED="1788241039427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
