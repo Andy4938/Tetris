@@ -13,22 +13,56 @@ class Movegen:
     def generate(self, piece_type):
         state = PieceState(piece_type, x=4 if piece_type == 'o' else 3)
         self.search(state)
-        print(self.final_states)
+        # print(self.final_states)
         for state in self.final_states:
             if state.spin in ('mini', 't-spin'):
                 print(f'{state}, {'mini' or 't-spin' in state}')
-        print(len(self.final_states), len(set(self.final_states)))
+        # print(len(self.final_states), len(set(self.final_states)))
+
+    def path(self, state):
+        if not state.spin:
+            current = PieceState(state.type, x=state.x, y=state.y, rotation=state.rotation, spin='None')
+            current.spin = 't-spin'
+            if current not in self.previous:
+                current.spin = 'mini'
+                if current not in self.previous:
+                    current.spin = 'None'
+            print(current)
+        else:
+            current = state
+        path = []
+        while self.previous[current] is not None:
+            path.append(self.previous[current][1])
+            current = self.previous[current][0]
+            # current.spin = 't-spin'
+            # if current not in self.previous:
+            #     current.spin = 'mini'
+            #     if current not in self.previous:
+            #         current.spin = 'None'
+        # print(path)
+        return path
+
+    def _cells(self, state):
+        my_map = Piece.MINO_MAPS[state.type][state.rotation]
+        dimension = int(sqrt(len(my_map)))
+        return frozenset((index % dimension + state.x, index // dimension + state.y)
+                         for index, mino in enumerate(my_map) if mino)
 
     def search(self, spawn):
         self.states = []
         self.final_states = []
         self.previous = {spawn: None}
         queue = deque([spawn])
+        seen = set()
+        inputs = ['right', 'left', 'sd'] if spawn.type == 'o' else Movegen.INPUTS
         while queue:
             state = queue.popleft()
             if self._check_final_state(state):
-                  self.final_states.append(state)
-            for move in Movegen.INPUTS:
+                key = (self._cells(state), state.spin)
+                if key not in seen:
+                    seen.add(key)
+                    self.final_states.append(state)
+            for move in inputs:
                 nxt = state.move(move, self.matrix)
                 if nxt is not None and nxt not in self.previous:
                     self.previous[nxt] = (state, move)
@@ -76,7 +110,7 @@ class PieceState:
                 kicks = table[new_r]
             my_map = Piece.MINO_MAPS[self.type][new_r]
             dimension = int(sqrt(len(my_map)))
-            for dx, dy in [(0, 0)] + list(kicks):
+            for k, (dx, dy) in enumerate([(0, 0)] + list(kicks)):
                 spin = 'None'
                 valid_rotation = True
                 t_corners = 0
@@ -111,6 +145,8 @@ class PieceState:
                 if valid_rotation:
                     if self.type == 't':
                         spin = spin if t_corners < 3 else 't-spin' if t_corners_faced == 2 else 'mini'
+                        if spin == 'mini' and k == 4 and input != '180':
+                            spin = 't-spin'
                     else:
                         spin = f'mini' if spin != 'None' else 'None'
                     return PieceState(self.type, self.x + dx, self.y - dy, new_r, spin)
@@ -141,4 +177,3 @@ class PieceState:
                         dropped = True
         dy -= 1
         return PieceState(self.type, self.x, self.y + dy, self.rotation, self.spin if dy == 0 else 'None')
-
