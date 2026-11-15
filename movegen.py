@@ -177,3 +177,4 @@ class PieceState:
                         dropped = True
         dy -= 1
         return PieceState(self.type, self.x, self.y + dy, self.rotation, self.spin if dy == 0 else 'None')
+
